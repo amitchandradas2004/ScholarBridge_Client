@@ -55,7 +55,7 @@ const countries = [
 
 export default function PopularCountries() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-indigo-50 via-white to-cyan-50 py-24">
+    <section className="relative overflow-hidden bg-linear-to-br from-indigo-50 via-white to-cyan-50 py-24">
       <div className=" container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="absolute inset-0 overflow-hidden">
           <motion.div
@@ -113,7 +113,7 @@ export default function PopularCountries() {
               }}
             >
               <div className="group relative overflow-hidden rounded-3xl border border-white/70 bg-white/70 p-6 text-center shadow-lg backdrop-blur-xl transition-all duration-300">
-                <div className="absolute left-0 top-0 h-1 w-full bg-gradient-to-r from-indigo-500 to-cyan-500" />
+                <div className="absolute left-0 top-0 h-1 w-full bg-linear-to-r from-indigo-500 to-cyan-500" />
 
                 <motion.span
                   animate={{
