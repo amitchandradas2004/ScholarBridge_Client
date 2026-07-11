@@ -4,8 +4,8 @@ import Link from "next/link";
 export default function Navbar() {
   const user = false;
   return (
-    <div className="bg-base-100 shadow-sm">
-      <div className="container mx-auto navbar">
+    <div className="bg-base-100 shadow-sm fixed top-0 left-0 right-0 z-50">
+      <div className="container mx-auto flex py-1">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
