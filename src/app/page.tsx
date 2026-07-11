@@ -1,3 +1,4 @@
+import Banner from "@/components/Banner/Banner";
 import { Inter, Sora } from "next/font/google";
 
 export const sora = Sora({
@@ -11,5 +12,9 @@ export const inter = Inter({
 });
 
 export default function Home() {
-  return <div className={`${sora.className}`}>Welcome to ScholarBridge</div>;
+  return (
+    <div className={`${sora.className}`}>
+      <Banner />
+    </div>
+  );
 }
