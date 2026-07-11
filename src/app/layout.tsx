@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar/Navbar";
 import type { Metadata } from "next";
 import "./globals.css";
+import Footer from "@/components/Footer/Footer";
 
 export const metadata: Metadata = {
   title: "ScholarBridge | HomePage",
@@ -18,6 +19,7 @@ export default function RootLayout({
         <main>
           <Navbar />
           {children}
+          <Footer />
         </main>
       </body>
     </html>
