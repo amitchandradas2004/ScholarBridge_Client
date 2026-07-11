@@ -1,7 +1,8 @@
+import Footer from "@/components/Footer/Footer";
 import Navbar from "@/components/Navbar/Navbar";
 import type { Metadata } from "next";
+import { Toaster } from "react-hot-toast";
 import "./globals.css";
-import Footer from "@/components/Footer/Footer";
 
 export const metadata: Metadata = {
   title: "ScholarBridge | HomePage",
@@ -19,6 +20,14 @@ export default function RootLayout({
         <main>
           <Navbar />
           {children}
+          <Toaster
+            position="top-center"
+            reverseOrder={false}
+            gutter={12}
+            toastOptions={{
+              duration: 4000,
+            }}
+          />
           <Footer />
         </main>
       </body>

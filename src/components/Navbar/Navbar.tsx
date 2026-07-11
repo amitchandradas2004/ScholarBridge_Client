@@ -14,14 +14,14 @@ export default function Navbar() {
   const navLinks = user
     ? [
         { name: "Home", href: "/" },
-        { name: "About", href: "/about" },
+
         { name: "Scholarships", href: "/scholarships" },
         { name: "Add Scholarship", href: "/addScholarships" },
         { name: "My Scholarships", href: "/myScholarships" },
       ]
     : [
         { name: "Home", href: "/" },
-        { name: "About", href: "/about" },
+
         { name: "Scholarships", href: "/scholarships" },
       ];
 
