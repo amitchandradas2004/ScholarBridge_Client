@@ -1,131 +1,248 @@
 "use client";
 
+import Logo from "@/Assets/logo.png";
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { HiBars3, HiXMark } from "react-icons/hi2";
 
-import Logo from "@/Assets/logo.png";
-
 export default function Navbar() {
-  const user = false;
+  const user = true;
   const [open, setOpen] = useState(false);
-
+  const pathname = usePathname();
   const navLinks = user
     ? [
         { name: "Home", href: "/" },
-
         { name: "Scholarships", href: "/scholarships" },
         { name: "Add Scholarship", href: "/addScholarships" },
         { name: "My Scholarships", href: "/myScholarships" },
       ]
     : [
         { name: "Home", href: "/" },
-
         { name: "Scholarships", href: "/scholarships" },
       ];
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
-      <div className="container mx-auto pt-2 px-2 md:px-0">
-        <nav className="flex h-15 items-center justify-between rounded-2xl border border-white/40 bg-white/70 px-6 shadow-xl backdrop-blur-xl">
+      <div className="relative mx-auto container px-2 md:px-0 pt-2">
+        <motion.nav
+          initial={{
+            y: -80,
+            opacity: 0,
+          }}
+          animate={{
+            y: 0,
+            opacity: 1,
+          }}
+          transition={{
+            duration: 0.6,
+          }}
+          className="flex items-center justify-between rounded-2xl border border-white/10 bg-slate-900/70 px-4 py-2 shadow-[0_10px_40px_rgba(0,0,0,0.35)] backdrop-blur-2xl"
+        >
           {/* Logo */}
-          <Link
-            href="/"
-            className="flex items-center gap-3 transition hover:scale-105"
-          >
-            <Image
-              src={Logo}
-              alt="ScholarBridge"
-              width={45}
-              height={45}
-              priority
-            />
+          <Link href="/" className="flex items-center gap-3">
+            <motion.div
+              whileHover={{
+                rotate: 10,
+                scale: 1.05,
+              }}
+            >
+              <Image
+                src={Logo}
+                alt="ScholarBridge Logo"
+                width={48}
+                height={48}
+              />
+            </motion.div>
 
-            <span className="text-xl font-extrabold tracking-tight text-slate-800">
+            <span className="text-2xl font-black tracking-tight text-white">
               Scholar
-              <span className="text-indigo-600">Bridge</span>
+              <span className="bg-linear-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
+                Bridge
+              </span>
             </span>
           </Link>
 
           {/* Desktop Menu */}
-          <ul className="hidden items-center gap-2 lg:flex">
-            {navLinks.map((item) => (
-              <li key={item.name}>
-                <Link
-                  href={item.href}
-                  className="rounded-xl px-4 py-2 font-medium text-slate-700 transition-all duration-300 hover:bg-indigo-50 hover:text-indigo-600"
+          <ul className="hidden items-center gap-3 lg:flex">
+            {navLinks.map((item) => {
+              const isActive =
+                item.href === "/"
+                  ? pathname === "/"
+                  : pathname.startsWith(item.href);
+
+              return (
+                <motion.li
+                  key={item.name}
+                  whileHover={{ y: -2 }}
+                  className="relative"
                 >
-                  {item.name}
-                </Link>
-              </li>
-            ))}
+                  <Link
+                    href={item.href}
+                    className={`relative rounded-xl px-4 py-2 font-medium transition-all duration-300 ${
+                      isActive
+                        ? "bg-white/10 text-white"
+                        : "text-slate-300 hover:bg-white/10 hover:text-white"
+                    }`}
+                  >
+                    {item.name}
+                    {isActive && (
+                      <motion.span
+                        layoutId="active-nav"
+                        className="absolute -bottom-1 left-2 right-2 rounded-full"
+                        transition={{
+                          type: "spring",
+                          stiffness: 450,
+                          damping: 35,
+                        }}
+                      />
+                    )}
+                  </Link>
+                </motion.li>
+              );
+            })}
           </ul>
 
-          {/* Right Button */}
+          {/* Right Side */}
           <div className="hidden lg:flex">
             {user ? (
-              <button className="rounded-full bg-red-500 px-6 py-3 font-semibold text-white transition hover:bg-red-600">
+              <motion.button
+                whileHover={{
+                  scale: 1.05,
+                }}
+                whileTap={{
+                  scale: 0.96,
+                }}
+                className="rounded-full bg-red-500 px-6 py-3 font-semibold text-white transition hover:bg-red-600 cursor-pointer"
+              >
                 Logout
-              </button>
+              </motion.button>
             ) : (
               <Link href="/signup">
-                <button className="rounded-full bg-indigo-600 px-6 py-3 font-semibold text-white shadow-lg shadow-indigo-200 transition-all duration-300 hover:-translate-y-0.5 hover:bg-indigo-700">
+                <motion.button
+                  whileHover={{
+                    scale: 1.05,
+                    y: -2,
+                  }}
+                  whileTap={{
+                    scale: 0.96,
+                  }}
+                  className="rounded-full bg-linear-to-r from-indigo-600 to-cyan-500 px-7 py-3 font-semibold text-white shadow-lg shadow-indigo-900/40 transition cursor-pointer"
+                >
                   Get Started
-                </button>
+                </motion.button>
               </Link>
             )}
           </div>
 
-          {/* Mobile Button */}
-          <button
+          {/* Mobile Menu Button */}
+          <motion.button
+            whileTap={{
+              scale: 0.9,
+            }}
             onClick={() => setOpen(!open)}
-            className="rounded-xl bg-indigo-50 p-2 text-indigo-600 lg:hidden"
+            className="rounded-xl border border-white/10 bg-white/10 p-2 text-white backdrop-blur-xl lg:hidden"
           >
             {open ? (
               <HiXMark className="text-2xl" />
             ) : (
               <HiBars3 className="text-2xl" />
             )}
-          </button>
-        </nav>
+          </motion.button>
+        </motion.nav>
 
         {/* Mobile Menu */}
-        <div
-          className={`overflow-hidden transition-all duration-300 ${
-            open ? "mt-3 max-h-96" : "max-h-0"
-          } lg:hidden`}
-        >
-          <div className="rounded-2xl border border-white/50 bg-white/80 p-4 shadow-xl backdrop-blur-xl">
-            <ul className="space-y-2">
-              {navLinks.map((item) => (
-                <li key={item.name}>
-                  <Link
-                    href={item.href}
-                    onClick={() => setOpen(false)}
-                    className="block rounded-lg px-4 py-3 font-medium text-slate-700 transition hover:bg-indigo-50 hover:text-indigo-600"
-                  >
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: -20,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              exit={{
+                opacity: 0,
+                y: -20,
+              }}
+              transition={{
+                duration: 0.3,
+              }}
+              className="mt-4 lg:hidden"
+            >
+              <div className="overflow-hidden rounded-2xl border border-white/10 bg-slate-900/80 p-5 shadow-2xl backdrop-blur-2xl">
+                <ul className="space-y-2">
+                  {navLinks.map((item, index) => (
+                    <motion.li
+                      key={item.name}
+                      initial={{
+                        opacity: 0,
+                        x: -20,
+                      }}
+                      animate={{
+                        opacity: 1,
+                        x: 0,
+                      }}
+                      transition={{
+                        delay: index * 0.08,
+                      }}
+                    >
+                      <Link
+                        href={item.href}
+                        onClick={() => setOpen(false)}
+                        className={`block rounded-xl px-4 py-3 font-medium transition-all duration-300 ${
+                          (
+                            item.href === "/"
+                              ? pathname === "/"
+                              : pathname.startsWith(item.href)
+                          )
+                            ? "bg-white/10 text-white"
+                            : "text-slate-300 hover:bg-white/10 hover:text-white"
+                        }`}
+                      >
+                        {item.name}
+                      </Link>
+                    </motion.li>
+                  ))}
+                </ul>
 
-            <div className="mt-4">
-              {user ? (
-                <button className="w-full rounded-full bg-red-500 py-3 font-semibold text-white">
-                  Logout
-                </button>
-              ) : (
-                <Link href="/signup">
-                  <button className="w-full rounded-full bg-indigo-600 py-3 font-semibold text-white">
-                    Get Started
-                  </button>
-                </Link>
-              )}
-            </div>
-          </div>
-        </div>
+                <div className="mt-5 border-t border-white/10 pt-5">
+                  {user ? (
+                    <motion.button
+                      whileHover={{
+                        scale: 1.02,
+                      }}
+                      whileTap={{
+                        scale: 0.96,
+                      }}
+                      className="w-full rounded-full bg-red-500 py-3 font-semibold text-white cursor-pointer"
+                    >
+                      Logout
+                    </motion.button>
+                  ) : (
+                    <Link href="/signup">
+                      <motion.button
+                        whileHover={{
+                          scale: 1.02,
+                        }}
+                        whileTap={{
+                          scale: 0.96,
+                        }}
+                        className="w-full rounded-full bg-linear-to-r from-indigo-600 to-cyan-500 py-3 font-semibold text-white shadow-lg shadow-indigo-900/40 cursor-pointer"
+                      >
+                        Get Started
+                      </motion.button>
+                    </Link>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </header>
   );

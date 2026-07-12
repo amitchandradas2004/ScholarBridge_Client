@@ -1,14 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import CountUp from "react-countup";
-import { useInView } from "react-intersection-observer";
 import {
+  HiArrowRight,
   HiOutlineAcademicCap,
-  HiOutlineGlobeAlt,
   HiOutlineBuildingLibrary,
   HiOutlineCurrencyDollar,
+  HiOutlineGlobeAlt,
 } from "react-icons/hi2";
+import { useInView } from "react-intersection-observer";
 
 const stats = [
   {
@@ -19,7 +21,7 @@ const stats = [
     description: "Active scholarships from universities worldwide.",
     icon: HiOutlineAcademicCap,
     linear: "from-indigo-500 to-violet-600",
-    glow: "shadow-indigo-300/50",
+    glow: "shadow-indigo-500/20",
   },
   {
     id: 2,
@@ -29,7 +31,7 @@ const stats = [
     description: "Scholarships available across the globe.",
     icon: HiOutlineGlobeAlt,
     linear: "from-sky-500 to-cyan-500",
-    glow: "shadow-cyan-300/50",
+    glow: "shadow-cyan-500/20",
   },
   {
     id: 3,
@@ -39,7 +41,7 @@ const stats = [
     description: "Top-ranked universities and institutions.",
     icon: HiOutlineBuildingLibrary,
     linear: "from-fuchsia-500 to-pink-500",
-    glow: "shadow-fuchsia-300/50",
+    glow: "shadow-fuchsia-500/20",
   },
   {
     id: 4,
@@ -50,7 +52,7 @@ const stats = [
     description: "Scholarship funding available every year.",
     icon: HiOutlineCurrencyDollar,
     linear: "from-emerald-500 to-green-600",
-    glow: "shadow-emerald-300/50",
+    glow: "shadow-emerald-500/20",
   },
 ];
 
@@ -61,45 +63,44 @@ export default function Statistics() {
   });
 
   return (
-    <section
-      ref={ref}
-      className="relative overflow-hidden bg-linear-to-br from-indigo-800 via-blue-800 to-cyan-800 py-28"
-    >
+    <section ref={ref} className="relative overflow-hidden bg-[#030712] py-24">
       {/* Background */}
+
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-[#0B1120] to-slate-950" />
 
       <motion.div
         animate={{
           scale: [1, 1.2, 1],
-          opacity: [0.2, 0.4, 0.2],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-        }}
-        className="absolute -left-24 -top-24 h-96 w-96 rounded-full bg-white/20 blur-3xl"
-      />
-
-      <motion.div
-        animate={{
-          scale: [1.2, 1, 1.2],
-          opacity: [0.15, 0.35, 0.15],
+          opacity: [0.15, 0.3, 0.15],
         }}
         transition={{
           duration: 10,
           repeat: Infinity,
         }}
-        className="absolute bottom-0 right-0 h-105 w-105 rounded-full bg-cyan-300/30 blur-3xl"
+        className="absolute -left-32 -top-32 h-105 w-105 rounded-full bg-indigo-600/20 blur-[130px]"
       />
 
       <motion.div
         animate={{
-          y: [-15, 15, -15],
+          scale: [1.15, 1, 1.15],
+          opacity: [0.12, 0.28, 0.12],
         }}
         transition={{
           duration: 12,
           repeat: Infinity,
         }}
-        className="absolute left-1/2 top-10 h-40 w-40 rounded-full bg-white/10 blur-3xl"
+        className="absolute bottom-0 right-0 h-115 w-115 rounded-full bg-cyan-500/15 blur-[130px]"
+      />
+
+      <motion.div
+        animate={{
+          y: [-20, 20, -20],
+        }}
+        transition={{
+          duration: 12,
+          repeat: Infinity,
+        }}
+        className="absolute left-1/2 top-20 h-52 w-52 rounded-full bg-white/5 blur-[120px]"
       />
 
       <div className="container relative mx-auto px-6">
@@ -112,24 +113,24 @@ export default function Statistics() {
           transition={{ duration: 0.7 }}
           className="mx-auto max-w-3xl text-center"
         >
-          <span className="inline-flex items-center rounded-full bg-white/15 px-5 py-2 text-sm font-semibold tracking-wide text-white backdrop-blur-md">
+          <span className="inline-flex items-center rounded-full border border-indigo-500/30 bg-indigo-500/10 px-5 py-2 text-sm font-semibold tracking-wide text-indigo-300 backdrop-blur-xl">
             📊 Trusted Worldwide
           </span>
 
-          <h2 className="mt-7 font-heading text-4xl font-black leading-tight text-white md:text-5xl lg:text-6xl">
-            Numbers That Inspire
-            <br />
-            Confidence
+          <h2 className="font-heading mt-7 text-4xl font-black leading-tight text-white md:text-5xl lg:text-6xl">
+            Numbers That Build
+            <span className="block bg-gradient-to-r from-indigo-400 via-cyan-300 to-sky-400 bg-clip-text text-transparent">
+              Student Confidence
+            </span>
           </h2>
 
-          <p className="font-body mx-auto mt-6 max-w-2xl text-lg leading-8 text-blue-100">
-            ScholarBridge connects ambitious students with thousands of
-            scholarships, universities, and funding opportunities from around
-            the world.
+          <p className="font-body mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-400">
+            Every number represents students discovering opportunities,
+            universities opening doors, and dreams turning into reality.
           </p>
         </motion.div>
 
-        {/* Cards */}
+        {/* Statistics Cards */}
 
         <div className="mt-20 grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-4">
           {stats.map((stat, index) => {
@@ -149,11 +150,11 @@ export default function Statistics() {
                   y: -12,
                   scale: 1.04,
                 }}
-                className={`group relative overflow-hidden rounded-3xl border border-white/20 bg-white/10 p-8 backdrop-blur-xl shadow-2xl ${stat.glow}`}
+                className={`group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl shadow-2xl ${stat.glow}`}
               >
-                {/* Glow */}
+                {/* Card Glow */}
                 <div
-                  className={`absolute -right-10 -top-10 h-36 w-36 rounded-full bg-linear-to-br ${stat.linear} opacity-20 blur-3xl transition-all duration-500 group-hover:scale-125`}
+                  className={`absolute -right-10 -top-10 h-36 w-36 rounded-full bg-gradient-to-br ${stat.linear} opacity-20 blur-3xl transition-all duration-500 group-hover:scale-125`}
                 />
 
                 {/* Icon */}
@@ -166,7 +167,7 @@ export default function Statistics() {
                     repeat: Infinity,
                     delay: index * 0.3,
                   }}
-                  className={`flex h-16 w-16 items-center justify-center rounded-2xl bg-linear-to-br ${stat.linear} text-white shadow-xl`}
+                  className={`flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br ${stat.linear} text-white shadow-xl`}
                 >
                   <Icon className="text-3xl" />
                 </motion.div>
@@ -183,17 +184,17 @@ export default function Statistics() {
                     {stat.suffix}
                   </h3>
 
-                  <h4 className="mt-4 font-heading text-2xl font-bold text-white">
+                  <h4 className="font-heading mt-4 text-2xl font-bold text-white">
                     {stat.title}
                   </h4>
 
-                  <p className="font-body mt-4 leading-7 text-blue-100">
+                  <p className="font-body mt-4 leading-7 text-slate-400">
                     {stat.description}
                   </p>
                 </div>
 
                 {/* Hover Border */}
-                <div className="absolute inset-0 rounded-3xl border border-transparent transition-all duration-300 group-hover:border-white/40" />
+                <div className="pointer-events-none absolute inset-0 rounded-3xl border border-transparent transition-all duration-300 group-hover:border-cyan-400/40" />
 
                 {/* Decorative Dots */}
                 <div className="absolute bottom-5 right-5 flex gap-1 opacity-40">
@@ -206,37 +207,50 @@ export default function Statistics() {
           })}
         </div>
 
-        {/* Bottom CTA */}
+        {/* CTA */}
 
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.3 }}
+          initial={{
+            opacity: 0,
+            y: 40,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+          }}
+          transition={{
+            duration: 0.7,
+            delay: 0.3,
+          }}
           className="mt-24 text-center"
         >
-          <div className="mx-auto max-w-3xl rounded-4xl border border-white/20 bg-white/10 p-10 backdrop-blur-xl">
+          <div className="mx-auto max-w-4xl rounded-4xl border border-white/10 bg-white/5 p-10 backdrop-blur-xl">
             <h3 className="font-heading text-3xl font-bold text-white md:text-4xl">
-              Your Scholarship Journey Starts Here
+              Start Your Scholarship Journey Today
             </h3>
 
-            <p className="font-body mx-auto mt-5 max-w-2xl text-lg leading-8 text-blue-100">
-              Discover thousands of scholarships, save your favorites, and take
-              the next step toward studying at your dream university.
+            <p className="font-body mx-auto mt-5 max-w-2xl text-lg leading-8 text-slate-400">
+              Join thousands of students discovering scholarships from the
+              world's leading universities. Your dream education is only one
+              click away.
             </p>
 
-            <motion.a
-              href="/scholarships"
-              whileHover={{
-                scale: 1.05,
-              }}
-              whileTap={{
-                scale: 0.96,
-              }}
-              className="mt-8 inline-flex items-center rounded-full bg-white px-8 py-4 font-semibold text-indigo-700 shadow-xl transition hover:bg-slate-100"
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.96 }}
+              className="mt-8"
             >
-              Explore Scholarships →
-            </motion.a>
+              <Link
+                href="/scholarships"
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-cyan-500 px-8 py-4 font-semibold text-white shadow-lg shadow-cyan-500/20 transition hover:shadow-cyan-400/30"
+              >
+                Explore Scholarships
+                <HiArrowRight className="text-lg" />
+              </Link>
+            </motion.div>
           </div>
         </motion.div>
       </div>

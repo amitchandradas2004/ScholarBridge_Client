@@ -249,75 +249,52 @@ const stories = [
 
 export default function SuccessStories() {
   return (
-    <section className="relative overflow-hidden bg-linear-to-br from-indigo-50 via-sky-50 to-cyan-100 py-24">
-      {/* Background Decorations */}
+    <section className="relative overflow-hidden bg-[#030712] py-24">
+      {/* Background Glow */}
 
-      <motion.div
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.2, 0.45, 0.2],
-        }}
-        transition={{
-          duration: 12,
-          repeat: Infinity,
-        }}
-        className="absolute -left-32 -top-32 h-96 w-96 rounded-full bg-indigo-300 blur-3xl"
-      />
-
-      <motion.div
-        animate={{
-          scale: [1.1, 1, 1.1],
-          opacity: [0.15, 0.35, 0.15],
-        }}
-        transition={{
-          duration: 14,
-          repeat: Infinity,
-        }}
-        className="absolute right-0 top-20 h-105 w-105 rounded-full bg-cyan-300 blur-3xl"
-      />
-
-      <motion.div
-        animate={{
-          y: [-10, 10, -10],
-          opacity: [0.15, 0.3, 0.15],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-        }}
-        className="absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-blue-200 blur-3xl"
-      />
-
-      <div className="absolute inset-0 bg-[radial-linear(circle_at_top_right,rgba(255,255,255,0.6),transparent_40%)]" />
-
-      <div className="absolute inset-0 bg-[linear-linear(rgba(255,255,255,0.18)_1px,transparent_1px),linear-linear(90deg,rgba(255,255,255,0.18)_1px,transparent_1px)] bg-size-[60px_60px] opacity-25" />
-      {/* Background Decorations */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,#030712,#050b18,#030712)]" />
 
       <motion.div
         animate={{
           scale: [1, 1.15, 1],
-          opacity: [0.25, 0.45, 0.25],
+          opacity: [0.18, 0.3, 0.18],
         }}
         transition={{
           duration: 10,
           repeat: Infinity,
         }}
-        className="absolute -left-24 -top-24 h-80 w-80 rounded-full bg-indigo-200 blur-3xl"
+        className="absolute -left-28 -top-28 h-96 w-96 rounded-full bg-indigo-600/30 blur-3xl"
       />
 
       <motion.div
         animate={{
           scale: [1.15, 1, 1.15],
-          opacity: [0.15, 0.35, 0.15],
+          opacity: [0.12, 0.25, 0.12],
         }}
         transition={{
           duration: 12,
           repeat: Infinity,
         }}
-        className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-cyan-200 blur-3xl"
+        className="absolute right-0 top-10 h-105 w-105 rounded-full bg-cyan-500/20 blur-3xl"
       />
 
-      <div className=" relative mx-auto px-6">
+      <motion.div
+        animate={{
+          y: [-12, 12, -12],
+          opacity: [0.08, 0.18, 0.08],
+        }}
+        transition={{
+          duration: 9,
+          repeat: Infinity,
+        }}
+        className="absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-indigo-500/20 blur-3xl"
+      />
+
+      {/* Grid */}
+
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-size-[70px_70px]" />
+
+      <div className="container relative mx-auto px-6">
         {/* Heading */}
 
         <motion.div
@@ -327,20 +304,21 @@ export default function SuccessStories() {
           transition={{ duration: 0.7 }}
           className="mx-auto max-w-3xl text-center"
         >
-          <span className="inline-flex items-center rounded-full bg-indigo-100 px-5 py-2 text-sm font-semibold text-indigo-700">
+          <span className="inline-flex items-center rounded-full border border-indigo-500/30 bg-indigo-500/10 px-5 py-2 text-sm font-semibold text-indigo-300 backdrop-blur-xl">
             💙 Student Success Stories
           </span>
 
-          <h2 className="mt-6 font-heading text-4xl font-black text-slate-900 md:text-5xl">
+          <h2 className="mt-6 font-heading text-4xl font-black text-white md:text-5xl">
             Dreams Turned Into
-            <span className="block bg-linear-to-r from-indigo-600 to-cyan-500 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
               Real Achievements
             </span>
           </h2>
 
-          <p className="font-body mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-600">
+          <p className="font-body mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-400">
             Thousands of students have used ScholarBridge to discover
-            life-changing scholarship opportunities around the world.
+            life-changing scholarship opportunities from leading universities
+            around the world.
           </p>
         </motion.div>
 
@@ -357,53 +335,55 @@ export default function SuccessStories() {
                   y: -8,
                   scale: 1.03,
                 }}
-                className="group relative mx-4 w-90 overflow-hidden rounded-3xl border border-white/70 bg-white/80 p-8 shadow-xl backdrop-blur-xl h-full"
+                className="group relative mx-4 flex h-full w-90 flex-col overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/70 p-8 shadow-2xl backdrop-blur-xl transition-all duration-300 hover:border-indigo-500/50"
               >
                 {/* Rating */}
-                <div className="mb-3 flex">
+
+                <div className="mb-4 flex">
                   {[...Array(5)].map((_, i) => (
                     <HiStar key={i} className="text-xl text-amber-400" />
                   ))}
                 </div>
 
                 {/* Quote */}
-                <p className="font-body min-h-30 leading-8 text-slate-600">
+
+                <p className="min-h-32.5 leading-8 text-slate-300">
                   {story.quote}
                 </p>
 
                 {/* Student */}
-                <div className="mt-2 flex items-center gap-4">
+
+                <div className="mt-6 flex items-center gap-4">
                   <motion.img
                     whileHover={{
-                      rotate: 5,
                       scale: 1.08,
+                      rotate: 5,
                     }}
                     src={story.image}
                     alt={story.name}
-                    className="h-16 w-16 rounded-full border-4 border-indigo-100 object-cover"
+                    className="h-16 w-16 rounded-full border-2 border-indigo-500/40 object-cover"
                   />
 
                   <div>
-                    <h3 className="font-heading text-lg font-bold text-slate-900">
+                    <h3 className="font-heading text-lg font-bold text-white">
                       {story.name}
                     </h3>
 
-                    <p className="font-body text-sm text-slate-500">
-                      {story.university}
-                    </p>
+                    <p className="text-sm text-slate-400">{story.university}</p>
 
-                    <p className="font-body text-sm text-indigo-600">
+                    <p className="text-sm text-indigo-400">
                       📍 {story.country}
                     </p>
                   </div>
                 </div>
 
                 {/* Badge */}
-                <div className="mt-4 inline-flex rounded-full bg-indigo-100 px-4 py-2 text-sm font-semibold text-indigo-700">
+
+                <div className="mt-5 inline-flex w-fit rounded-full border border-indigo-500/30 bg-indigo-500/10 px-4 py-2 text-sm font-semibold text-indigo-300">
                   🎓 {story.scholarship}
                 </div>
 
-                <div className="absolute inset-0 rounded-3xl border border-transparent transition-all duration-300 group-hover:border-indigo-300" />
+                <div className="absolute inset-0 rounded-3xl border border-transparent transition-all duration-300 group-hover:border-indigo-500/40" />
               </motion.div>
             ))}
           </Marquee>
@@ -418,23 +398,31 @@ export default function SuccessStories() {
           transition={{ duration: 0.7 }}
           className="mt-24 text-center"
         >
-          <h3 className="font-heading text-3xl font-bold text-slate-900 md:text-4xl">
-            Your Story Could Be Next
-          </h3>
+          <div className="mx-auto max-w-4xl rounded-3xl border border-slate-800 bg-slate-900/70 p-10 shadow-2xl backdrop-blur-xl">
+            <h3 className="font-heading text-3xl font-bold text-white md:text-4xl">
+              Your Story Could Be Next
+            </h3>
 
-          <p className="font-body mx-auto mt-5 max-w-2xl text-lg leading-8 text-slate-600">
-            Explore scholarships from top universities worldwide and take the
-            first step toward achieving your academic dreams.
-          </p>
+            <p className="font-body mx-auto mt-5 max-w-2xl text-lg leading-8 text-slate-400">
+              Explore scholarships from the world's leading universities, save
+              your favorites, and take the next step toward achieving your
+              academic dreams.
+            </p>
 
-          <motion.a
-            href="/scholarships"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.96 }}
-            className="mt-8 inline-flex items-center rounded-full bg-indigo-600 px-8 py-4 font-semibold text-white shadow-lg transition hover:bg-indigo-700"
-          >
-            Explore Scholarships →
-          </motion.a>
+            <motion.a
+              href="/scholarships"
+              whileHover={{
+                scale: 1.05,
+              }}
+              whileTap={{
+                scale: 0.96,
+              }}
+              className="mt-8 inline-flex items-center gap-2 rounded-full bg-indigo-600 px-8 py-4 font-semibold text-white shadow-lg shadow-indigo-600/30 transition-all duration-300 hover:bg-indigo-500"
+            >
+              Explore Scholarships
+              <span>→</span>
+            </motion.a>
+          </div>
         </motion.div>
       </div>
     </section>
