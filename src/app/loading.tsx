@@ -7,7 +7,7 @@ import { PiBookOpenFill, PiGraduationCapFill } from "react-icons/pi";
 
 export default function Loading() {
   return (
-    <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-linear-to-br from-[#020617] via-[#0F172A] to-[#111827]">
+    <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-linear-to-br from-[#020617] via-[#0F172A] to-[#111827] py-20">
       {/* Animated Background */}
 
       <motion.div
