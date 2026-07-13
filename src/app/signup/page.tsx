@@ -1,9 +1,11 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
 import { Inter, Sora } from "next/font/google";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
@@ -32,35 +34,49 @@ export default function SignupPage() {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData.entries());
+    const dataOfSignIn = Object.fromEntries(formData.entries());
+    console.log(dataOfSignIn);
 
-    toast.success(
-      <div>
-        <h2 className="font-heading text-lg font-bold">
-          Welcome to ScholarBridge!
-        </h2>
+    const { data, error } = await authClient.signUp.email({
+      name: dataOfSignIn.name as string,
+      email: dataOfSignIn.email as string,
+      password: dataOfSignIn.password as string,
+      image: dataOfSignIn.image as string,
+    });
+      
+    console.log(data, error);
 
-        <p className="font-body mt-1 text-sm opacity-80">
-          Your account has been created successfully.
-        </p>
-      </div>,
-      {
-        icon: "🎉",
-        style:
-          resolvedTheme === "dark"
-            ? {
-                background: "#0f172a",
-                color: "#f8fafc",
-                border: "1px solid #334155",
-                borderRadius: "16px",
-                padding: "16px",
-                boxShadow: "0 10px 30px rgba(0,0,0,.45)",
-              }
-            : undefined,
-      },
-    );
+    if (data) {
+      toast.success(
+        <div>
+          <h2 className="font-heading text-lg font-bold">
+            Welcome to ScholarBridge!
+          </h2>
 
-    console.log(data);
+          <p className="font-body mt-1 text-sm opacity-80">
+            Your account has been created successfully.
+          </p>
+        </div>,
+        {
+          icon: "🎉",
+          style:
+            resolvedTheme === "dark"
+              ? {
+                  background: "#0f172a",
+                  color: "#f8fafc",
+                  border: "1px solid #334155",
+                  borderRadius: "16px",
+                  padding: "16px",
+                  boxShadow: "0 10px 30px rgba(0,0,0,.45)",
+                }
+              : undefined,
+        },
+      );
+      redirect("/");
+    }
+    if (error) {
+      alert(error.message);
+    }
   };
 
   return (
@@ -319,6 +335,7 @@ export default function SignupPage() {
 
             <label className="flex cursor-pointer items-center gap-3">
               <input
+                required
                 type="checkbox"
                 className="checkbox checkbox-primary mt-1"
               />

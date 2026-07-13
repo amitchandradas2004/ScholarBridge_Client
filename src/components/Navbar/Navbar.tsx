@@ -9,7 +9,10 @@ import { useState } from "react";
 import { HiBars3, HiXMark } from "react-icons/hi2";
 
 export default function Navbar() {
-  const user = true;
+  const user = false;
+
+
+  
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const navLinks = user
@@ -39,7 +42,7 @@ export default function Navbar() {
           transition={{
             duration: 0.6,
           }}
-          className="flex items-center justify-between rounded-2xl border border-white/10 bg-slate-900/70 px-4 py-2 shadow-[0_10px_40px_rgba(0,0,0,0.35)] backdrop-blur-2xl"
+          className="flex items-center justify-between rounded-full border border-white/10 bg-slate-900/70 px-5 py-2.5 shadow-[0_10px_40px_rgba(0,0,0,0.35)] backdrop-blur-2xl"
         >
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
