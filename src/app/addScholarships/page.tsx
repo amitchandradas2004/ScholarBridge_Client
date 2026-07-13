@@ -41,6 +41,7 @@ import {
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import { AddScholarshipSkeleton } from "@/components/Skeletons/AddScholarshipSkeleton";
 
 const inputClass =
   "w-full rounded-xl border border-slate-600 bg-slate-800 px-4 py-2.5 text-base text-slate-50 placeholder-slate-400 outline-none transition-colors focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/40";
@@ -73,10 +74,13 @@ const itemVariants = {
 
 const AddScholarshipPage = () => {
   const router = useRouter();
-  const { data: session } = authClient.useSession();
+  const { data: session, isPending } = authClient.useSession();
   const user = session?.user;
   const userEmail = user?.email;
   const postedBy = userEmail as string;
+  if (isPending) {
+    return <AddScholarshipSkeleton />;
+  }
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
