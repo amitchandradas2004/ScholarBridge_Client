@@ -1,18 +1,34 @@
 "use client";
 
 import Logo from "@/Assets/logo.png";
+import { authClient } from "@/lib/auth-client";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { redirect, usePathname } from "next/navigation";
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { HiBars3, HiXMark } from "react-icons/hi2";
 
 export default function Navbar() {
-  const user = false;
+  const { data: session, isPending } = authClient.useSession();
+  const user = session?.user;
+  const handleSignOut = async () => {
+    await authClient.signOut();
+    toast.success(
+      <div>
+        <h2 className="font-heading text-lg font-bold">Signed Out</h2>
 
-
-  
+        <p className="font-body mt-1 text-sm opacity-80">
+          You have successfully logged out of your account.
+        </p>
+      </div>,
+      {
+        icon: "👋",
+      },
+    );
+    redirect("/");
+  };
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const navLinks = user
@@ -110,29 +126,23 @@ export default function Navbar() {
 
           {/* Right Side */}
           <div className="hidden lg:flex">
-            {user ? (
+            {isPending ? (
+              <div className="h-12 w-25 animate-pulse rounded-full bg-white/10" />
+            ) : user ? (
               <motion.button
-                whileHover={{
-                  scale: 1.05,
-                }}
-                whileTap={{
-                  scale: 0.96,
-                }}
-                className="rounded-full bg-red-500 px-6 py-3 font-semibold text-white transition hover:bg-red-600 cursor-pointer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.96 }}
+                onClick={handleSignOut}
+                className="cursor-pointer rounded-full bg-red-500 px-6 py-3 font-semibold text-white"
               >
                 Logout
               </motion.button>
             ) : (
               <Link href="/signup">
                 <motion.button
-                  whileHover={{
-                    scale: 1.05,
-                    y: -2,
-                  }}
-                  whileTap={{
-                    scale: 0.96,
-                  }}
-                  className="rounded-full bg-linear-to-r from-indigo-600 to-cyan-500 px-7 py-3 font-semibold text-white shadow-lg shadow-indigo-900/40 transition cursor-pointer"
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.96 }}
+                  className="cursor-pointer rounded-full bg-linear-to-r from-indigo-600 to-cyan-500 px-7 py-3 font-semibold text-white"
                 >
                   Get Started
                 </motion.button>
@@ -214,28 +224,23 @@ export default function Navbar() {
                 </ul>
 
                 <div className="mt-5 border-t border-white/10 pt-5">
-                  {user ? (
+                  {isPending ? (
+                    <div className="h-12 w-32 animate-pulse rounded-full bg-white/10" />
+                  ) : user ? (
                     <motion.button
-                      whileHover={{
-                        scale: 1.02,
-                      }}
-                      whileTap={{
-                        scale: 0.96,
-                      }}
-                      className="w-full rounded-full bg-red-500 py-3 font-semibold text-white cursor-pointer"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.96 }}
+                      onClick={handleSignOut}
+                      className="cursor-pointer rounded-full bg-red-500 px-6 py-3 font-semibold text-white w-full"
                     >
                       Logout
                     </motion.button>
                   ) : (
                     <Link href="/signup">
                       <motion.button
-                        whileHover={{
-                          scale: 1.02,
-                        }}
-                        whileTap={{
-                          scale: 0.96,
-                        }}
-                        className="w-full rounded-full bg-linear-to-r from-indigo-600 to-cyan-500 py-3 font-semibold text-white shadow-lg shadow-indigo-900/40 cursor-pointer"
+                        whileHover={{ scale: 1.05, y: -2 }}
+                        whileTap={{ scale: 0.96 }}
+                        className="cursor-pointer rounded-full bg-linear-to-r from-indigo-600 to-cyan-500 px-7 py-3 font-semibold text-white w-full"
                       >
                         Get Started
                       </motion.button>

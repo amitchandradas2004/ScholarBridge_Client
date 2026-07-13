@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { HiArrowRight } from "react-icons/hi2";
 
 const countries = [
@@ -60,7 +60,7 @@ export default function PopularCountries() {
     <section className="relative overflow-hidden bg-[#030712] py-24">
       {/* Background */}
 
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-[#0B1120] to-slate-950" />
+      <div className="absolute inset-0 bg-linear-to-br from-slate-950 via-[#0B1120] to-slate-950" />
 
       <motion.div
         animate={{
@@ -102,7 +102,7 @@ export default function PopularCountries() {
 
           <h2 className="font-heading mt-6 text-4xl font-black text-white md:text-5xl">
             Popular Scholarship
-            <span className="block bg-gradient-to-r from-indigo-400 via-cyan-300 to-sky-400 bg-clip-text text-transparent">
+            <span className="block bg-linear-to-r from-indigo-400 via-cyan-300 to-sky-400 bg-clip-text text-transparent">
               Destinations
             </span>
           </h2>
@@ -133,11 +133,11 @@ export default function PopularCountries() {
             >
               <div className="group relative block overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-7 backdrop-blur-xl transition-all duration-300 hover:border-indigo-400/40 hover:bg-white/10">
                 {/* Top Glow */}
-                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-indigo-500 via-cyan-400 to-sky-500" />
+                <div className="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-indigo-500 via-cyan-400 to-sky-500" />
 
                 {/* Hover Glow */}
                 <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-                  <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-transparent to-cyan-500/10" />
+                  <div className="absolute inset-0 bg-linear-to-br from-indigo-500/10 via-transparent to-cyan-500/10" />
                 </div>
 
                 {/* Flag */}
@@ -186,7 +186,7 @@ export default function PopularCountries() {
 
           <Link
             href="/scholarships"
-            className="mt-6 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-cyan-500 px-8 py-4 font-semibold text-white shadow-lg shadow-cyan-500/20 transition duration-300 hover:scale-105"
+            className="mt-6 inline-flex items-center gap-2 rounded-full bg-linear-to-r from-indigo-600 to-cyan-500 px-8 py-4 font-semibold text-white shadow-lg shadow-cyan-500/20 transition duration-300 hover:scale-105"
           >
             Browse All Scholarships
             <HiArrowRight />

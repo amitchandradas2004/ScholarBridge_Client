@@ -32,10 +32,8 @@ export default function SignupPage() {
   const { resolvedTheme } = useTheme();
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     const formData = new FormData(e.currentTarget);
     const dataOfSignIn = Object.fromEntries(formData.entries());
-    console.log(dataOfSignIn);
 
     const { data, error } = await authClient.signUp.email({
       name: dataOfSignIn.name as string,
@@ -43,8 +41,6 @@ export default function SignupPage() {
       password: dataOfSignIn.password as string,
       image: dataOfSignIn.image as string,
     });
-      
-    console.log(data, error);
 
     if (data) {
       toast.success(
@@ -75,7 +71,7 @@ export default function SignupPage() {
       redirect("/");
     }
     if (error) {
-      alert(error.message);
+      toast.error(error?.message as string);
     }
   };
 
@@ -106,7 +102,7 @@ export default function SignupPage() {
           duration: 12,
           repeat: Infinity,
         }}
-        className="absolute bottom-0 right-0 h-[28rem] w-[28rem] rounded-full bg-cyan-300 dark:bg-cyan-700 blur-3xl"
+        className="absolute bottom-0 right-0 h-112 w-md rounded-full bg-cyan-300 dark:bg-cyan-700 blur-3xl"
       />
 
       <div className="container relative mx-auto grid items-center gap-14 md:grid-cols-2">
@@ -222,7 +218,7 @@ export default function SignupPage() {
           transition={{
             duration: 0.7,
           }}
-          className="rounded-[32px] border border-white/60 bg-white/80 p-8 shadow-2xl backdrop-blur-xl dark:border-slate-700/60 dark:bg-slate-900/80 md:p-10"
+          className="rounded-4xl border border-white/60 bg-white/80 p-8 shadow-2xl backdrop-blur-xl dark:border-slate-700/60 dark:bg-slate-900/80 md:p-10"
         >
           <div className="text-center">
             <h2

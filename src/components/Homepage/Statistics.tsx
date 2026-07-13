@@ -66,7 +66,7 @@ export default function Statistics() {
     <section ref={ref} className="relative overflow-hidden bg-[#030712] py-24">
       {/* Background */}
 
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-[#0B1120] to-slate-950" />
+      <div className="absolute inset-0 bg-linear-to-br from-slate-950 via-[#0B1120] to-slate-950" />
 
       <motion.div
         animate={{
@@ -119,7 +119,7 @@ export default function Statistics() {
 
           <h2 className="font-heading mt-7 text-4xl font-black leading-tight text-white md:text-5xl lg:text-6xl">
             Numbers That Build
-            <span className="block bg-gradient-to-r from-indigo-400 via-cyan-300 to-sky-400 bg-clip-text text-transparent">
+            <span className="block bg-linear-to-r from-indigo-400 via-cyan-300 to-sky-400 bg-clip-text text-transparent">
               Student Confidence
             </span>
           </h2>
@@ -154,7 +154,7 @@ export default function Statistics() {
               >
                 {/* Card Glow */}
                 <div
-                  className={`absolute -right-10 -top-10 h-36 w-36 rounded-full bg-gradient-to-br ${stat.linear} opacity-20 blur-3xl transition-all duration-500 group-hover:scale-125`}
+                  className={`absolute -right-10 -top-10 h-36 w-36 rounded-full bg-linear-to-br ${stat.linear} opacity-20 blur-3xl transition-all duration-500 group-hover:scale-125`}
                 />
 
                 {/* Icon */}
@@ -167,7 +167,7 @@ export default function Statistics() {
                     repeat: Infinity,
                     delay: index * 0.3,
                   }}
-                  className={`flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br ${stat.linear} text-white shadow-xl`}
+                  className={`flex h-16 w-16 items-center justify-center rounded-2xl bg-linear-to-br ${stat.linear} text-white shadow-xl`}
                 >
                   <Icon className="text-3xl" />
                 </motion.div>
@@ -245,7 +245,7 @@ export default function Statistics() {
             >
               <Link
                 href="/scholarships"
-                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-cyan-500 px-8 py-4 font-semibold text-white shadow-lg shadow-cyan-500/20 transition hover:shadow-cyan-400/30"
+                className="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-indigo-600 to-cyan-500 px-8 py-4 font-semibold text-white shadow-lg shadow-cyan-500/20 transition hover:shadow-cyan-400/30"
               >
                 Explore Scholarships
                 <HiArrowRight className="text-lg" />

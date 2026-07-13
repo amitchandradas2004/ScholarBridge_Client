@@ -252,7 +252,7 @@ export default function SuccessStories() {
     <section className="relative overflow-hidden bg-[#030712] py-24">
       {/* Background Glow */}
 
-      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,#030712,#050b18,#030712)]" />
+      <div className="absolute inset-0 bg-[linear-linear(to_bottom,#030712,#050b18,#030712)]" />
 
       <motion.div
         animate={{
@@ -292,7 +292,7 @@ export default function SuccessStories() {
 
       {/* Grid */}
 
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-size-[70px_70px]" />
+      <div className="absolute inset-0 bg-[linear-linear(rgba(255,255,255,0.03)_1px,transparent_1px),linear-linear(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-size-[70px_70px]" />
 
       <div className="container relative mx-auto px-6">
         {/* Heading */}
@@ -310,7 +310,7 @@ export default function SuccessStories() {
 
           <h2 className="mt-6 font-heading text-4xl font-black text-white md:text-5xl">
             Dreams Turned Into
-            <span className="block bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
+            <span className="block bg-linear-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
               Real Achievements
             </span>
           </h2>

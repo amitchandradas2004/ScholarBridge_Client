@@ -1,13 +1,13 @@
 "use client";
 
-import Image from "next/image";
-import { motion } from "framer-motion";
-import { PiBookOpenFill, PiGraduationCapFill } from "react-icons/pi";
 import logo from "@/Assets/logo.png";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { PiBookOpenFill, PiGraduationCapFill } from "react-icons/pi";
 
 export default function Loading() {
   return (
-    <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-[#020617] via-[#0F172A] to-[#111827]">
+    <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-linear-to-br from-[#020617] via-[#0F172A] to-[#111827]">
       {/* Animated Background */}
 
       <motion.div
@@ -40,7 +40,7 @@ export default function Loading() {
 
       {/* Grid */}
 
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-size-[65px_65px]" />
+      <div className="absolute inset-0 bg-[linear-linear(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-linear(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-size-[65px_65px]" />
 
       {/* Floating Icons */}
 
@@ -165,7 +165,7 @@ export default function Loading() {
             duration: 1.8,
             repeat: Infinity,
           }}
-          className="mt-16 bg-gradient-to-r from-indigo-300 via-cyan-300 to-blue-400 bg-clip-text text-center text-3xl font-black text-transparent"
+          className="mt-16 bg-linear-to-r from-indigo-300 via-cyan-300 to-blue-400 bg-clip-text text-center text-3xl font-black text-transparent"
         >
           Finding Scholarships...
         </motion.h2>
@@ -199,7 +199,7 @@ export default function Loading() {
               repeat: Infinity,
               ease: "easeInOut",
             }}
-            className="h-full w-1/2 rounded-full bg-gradient-to-r from-indigo-500 via-cyan-400 to-blue-500"
+            className="h-full w-1/2 rounded-full bg-linear-to-r from-indigo-500 via-cyan-400 to-blue-500"
           />
         </div>
 
@@ -218,7 +218,7 @@ export default function Loading() {
                 repeat: Infinity,
                 delay: i * 0.2,
               }}
-              className="h-3.5 w-3.5 rounded-full bg-gradient-to-r from-indigo-500 to-cyan-400 shadow-[0_0_20px_rgba(99,102,241,0.7)]"
+              className="h-3.5 w-3.5 rounded-full bg-linear-to-r from-indigo-500 to-cyan-400 shadow-[0_0_20px_rgba(99,102,241,0.7)]"
             />
           ))}
         </div>

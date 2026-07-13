@@ -1,8 +1,10 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import { motion } from "framer-motion";
 import { Inter, Sora } from "next/font/google";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
@@ -24,25 +26,35 @@ const inter = Inter({
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
+  const router = useRouter();
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData.entries());
+    const loginData = Object.fromEntries(formData.entries());
+    const { data, error } = await authClient.signIn.email({
+      email: loginData.email as string,
+      password: loginData.password as string,
+    });
 
-    toast.success(
-      <div>
-        <h3 className="font-heading text-base font-bold text-slate-900">
-          Welcome Back!
-        </h3>
+    if (data?.token) {
+      toast.success(
+        <div>
+          <h3 className="font-heading text-base font-bold text-slate-900">
+            Welcome Back!
+          </h3>
 
-        <p className="font-body mt-1 text-sm text-slate-600">
-          You have successfully signed in to{" "}
-          <span className="font-semibold text-indigo-600">ScholarBridge</span>.
-          Continue exploring scholarships around the world.
-        </p>
-      </div>,
-    );
-    console.log(data);
+          <p className="font-body mt-1 text-sm text-slate-600">
+            You have successfully signed in to{" "}
+            <span className="font-semibold text-indigo-600">ScholarBridge</span>
+            . Continue exploring scholarships around the world.
+          </p>
+        </div>,
+      );
+      router.push("/");
+    }
+    if (error) {
+      toast.error(error?.message as string);
+    }
   };
   return (
     <section
