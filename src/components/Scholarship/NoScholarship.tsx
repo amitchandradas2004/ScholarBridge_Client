@@ -10,7 +10,7 @@ const NoScholarship = () => {
       initial={{ opacity: 0, y: 25 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="flex min-h-[500px] items-center justify-center"
+      className="flex min-h-[500px] items-center justify-center bg-slate-950 py-25"
     >
       <div className="w-full max-w-2xl rounded-3xl border border-slate-800 bg-slate-900/80 p-10 text-center shadow-2xl backdrop-blur-xl">
         {/* Icon */}
@@ -33,8 +33,8 @@ const NoScholarship = () => {
         </h2>
 
         <p className="mx-auto mt-4 max-w-lg leading-7 text-slate-400">
-          We couldn't find any scholarships at the moment. New opportunities
-          are added regularly, so check back later or contribute by adding one.
+          We could not find any scholarships at the moment. New opportunities are
+          added regularly, so check back later or contribute by adding one.
         </p>
 
         {/* Decorative Badge */}
