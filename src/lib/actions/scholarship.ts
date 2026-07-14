@@ -16,3 +16,20 @@ export const postScholarShip = async (scholarshipData: ScholarshipData) => {
   revalidatePath("/myScholarships");
   return res.json();
 };
+
+export const deleteScholarship = async (id: string) => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_SERVER_URL}/api/scholarship/${id}`,
+    {
+      method: "DELETE",
+    },
+  );
+
+  if (!res.ok) {
+    throw new Error("Failed to delete scholarship.");
+  }
+
+  revalidatePath("/myScholarships");
+
+  return res.json();
+};

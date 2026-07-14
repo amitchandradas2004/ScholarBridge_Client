@@ -1,8 +1,9 @@
 "use client";
 
 import { Scholarship } from "@/types/scholarship";
-import { CalendarDays, Eye, Globe, Trash2 } from "lucide-react";
+import { CalendarDays, Eye, Globe } from "lucide-react";
 import Link from "next/link";
+import { DeleteScholarshipModal } from "./DeleteScholarshipModal";
 
 interface ScholarShipTableProps {
   scholarShips: Scholarship[];
@@ -94,13 +95,7 @@ const ScholarShipTable = ({ scholarShips }: ScholarShipTableProps) => {
                         >
                           <Eye size={18} />
                         </Link>
-
-                        <button
-                          type="button"
-                          className="cursor-pointer rounded-xl border border-red-500/20 bg-red-500/10 p-2.5 text-red-400 transition-all duration-300 hover:scale-110 hover:border-red-400 hover:bg-red-500/20"
-                        >
-                          <Trash2 size={18} />
-                        </button>
+                        <DeleteScholarshipModal scholarship={item} />
                       </div>
                     </td>
                   </tr>
