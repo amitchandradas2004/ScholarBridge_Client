@@ -1,7 +1,9 @@
-import { Scholarship } from "@/types/scholarship";
-export const getAllScholarships = async (): Promise<Scholarship[]> => {
+import { ScholarshipResponse } from "@/types/scholarship";
+export const getAllScholarships = async (
+  page: number = 1,
+): Promise<ScholarshipResponse> => {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER_URL}/api/scholarship`,
+    `${process.env.NEXT_PUBLIC_SERVER_URL}/api/scholarship?page=${page}`,
   );
 
   if (!res.ok) {

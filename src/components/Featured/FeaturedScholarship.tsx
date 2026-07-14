@@ -1,13 +1,14 @@
 import ScholarshipCard from "@/components/Scholarship/ScholarshipCard";
 import { getAllScholarships } from "@/lib/api/scholarship";
+import { Scholarship } from "@/types/scholarship";
 
 const FeaturedScholarship = async () => {
-  const allScholarships = await getAllScholarships();
-
+  const Scholarships = await getAllScholarships();
+  const allScholarships = Scholarships.data as Scholarship[];
   const featuredScholarships = allScholarships
     .filter((scholarship) => scholarship.fundingType === "Fully Funded")
     .slice(0, 6);
-
+  
   return (
     <section className="relative overflow-hidden bg-slate-950 py-20">
       {/* Background Glow */}

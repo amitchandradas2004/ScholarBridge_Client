@@ -25,6 +25,13 @@ export interface Scholarship {
   description: string;
   postedBy: string;
 }
+
+export interface ScholarshipResponse {
+  data: Scholarship[];
+  total: number;
+  currentPage: number;
+  totalPages: number;
+}
 export interface User {
   _id: string;
   name: string;
