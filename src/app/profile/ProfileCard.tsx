@@ -50,9 +50,9 @@ const ProfileCard = ({ user, myScholarships }: ProfileCardProps) => {
                 </div>
               </div>
 
-              <Button className="cursor-pointer rounded-xl bg-indigo-700">
+              {/* <Button className="cursor-pointer rounded-xl bg-indigo-700">
                 Update Profile
-              </Button>
+              </Button> */}
             </div>
 
             {/* Information */}

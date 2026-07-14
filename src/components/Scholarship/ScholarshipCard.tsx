@@ -34,7 +34,7 @@ export default function ScholarshipCard({ scholarship }: ScholarshipCardProps) {
           className="object-cover transition duration-500 group-hover:scale-110"
         />
 
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/20 to-transparent" />
 
         <div className="absolute bottom-4 left-4 rounded-full bg-indigo-600/90 px-3 py-1 text-xs font-semibold text-white backdrop-blur">
           {scholarship.fundingType}
@@ -76,7 +76,7 @@ export default function ScholarshipCard({ scholarship }: ScholarshipCardProps) {
         <Link href={`/scholarships/${scholarship._id}`}>
           <motion.div
             whileTap={{ scale: 0.98 }}
-            className="flex cursor-pointer items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-500 px-5 py-3 font-semibold text-white transition hover:shadow-lg hover:shadow-indigo-600/30"
+            className="flex cursor-pointer items-center justify-center gap-2 rounded-xl bg-linear-to-r from-indigo-600 to-cyan-500 px-5 py-3 font-semibold text-white transition hover:shadow-lg hover:shadow-indigo-600/30"
           >
             View Details
             <ArrowRight

@@ -19,7 +19,7 @@ export interface Scholarship {
   degreeLevel: string;
   fundingType: string;
   deadline: string;
-  amount: number;
+  amount: string;
   officialLink: string;
   bannerImage: string;
   description: string;
