@@ -18,7 +18,7 @@ interface ScholarshipCardProps {
   };
 }
 
-export default function ScholarshipCard({ scholarship }: ScholarshipCardProps) {
+export default function ScholarshipCard({ scholarship }: ScholarshipCardProps  ) {
   return (
     <motion.article
       whileHover={{ y: -8 }}
