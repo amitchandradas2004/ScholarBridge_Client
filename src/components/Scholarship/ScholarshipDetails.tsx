@@ -171,8 +171,6 @@ const ScholarshipDetails = ({ scholarship }: ScholarshipDetailsProps) => {
 
 export default ScholarshipDetails;
 
-/* ===================== Info Card Sub-Component ===================== */
-
 interface InfoCardProps {
   title: string;
   value: string | number;
