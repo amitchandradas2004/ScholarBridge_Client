@@ -36,11 +36,13 @@ export default function Navbar() {
         { name: "Home", href: "/" },
         { name: "Scholarships", href: "/scholarships" },
         { name: "Add Scholarship", href: "/addScholarships" },
-        { name: "My Scholarships", href: "/myScholarships" },
+        { name: "Manage", href: "/myScholarships" },
+        { name: "Profile", href: "/profile" },
       ]
     : [
         { name: "Home", href: "/" },
         { name: "Scholarships", href: "/scholarships" },
+        { name: "Login", href: "/login" },
       ];
 
   return (
@@ -85,7 +87,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Menu */}
-          <ul className="hidden items-center gap-3 lg:flex">
+          <ul className="hidden items-center gap-1.5 lg:flex">
             {navLinks.map((item) => {
               const isActive =
                 item.href === "/"
@@ -156,7 +158,7 @@ export default function Navbar() {
               scale: 0.9,
             }}
             onClick={() => setOpen(!open)}
-            className="rounded-xl border border-white/10 bg-white/10 p-2 text-white backdrop-blur-xl lg:hidden"
+            className="rounded-xl border border-white/10 bg-white/10 p-2 text-white backdrop-blur-xl lg:hidden cursor-pointer"
           >
             {open ? (
               <HiXMark className="text-2xl" />

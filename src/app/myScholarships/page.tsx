@@ -13,7 +13,7 @@ const MyScholarShipPage = async () => {
     return <NoScholarship />;
   }
 
-  const myScholarships = await getMyScholarships(session.user.email);
+  const myScholarships = await getMyScholarships(session?.user?.email);
 
   if (myScholarships.length === 0) {
     return <NoScholarship />;

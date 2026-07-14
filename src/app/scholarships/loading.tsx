@@ -12,7 +12,7 @@ const Loading = () => {
 
         {/* Cards */}
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {Array.from({ length: 6 }).map((_, index) => (
+          {Array.from({ length: 12 }).map((_, index) => (
             <ScholarshipCardSkeleton key={index} />
           ))}
         </div>

@@ -11,6 +11,7 @@ import {
   Popover,
 } from "react-aria-components";
 
+import { AddScholarshipSkeleton } from "@/components/Skeletons/AddScholarshipSkeleton";
 import { postScholarShip } from "@/lib/actions/scholarship";
 import { authClient } from "@/lib/auth-client";
 import { ScholarshipData } from "@/types/scholarship";
@@ -24,7 +25,6 @@ import {
   TextArea,
   TextField,
 } from "@heroui/react";
-import { motion } from "framer-motion";
 import {
   Building2,
   CalendarClock,
@@ -41,7 +41,6 @@ import {
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
-import { AddScholarshipSkeleton } from "@/components/Skeletons/AddScholarshipSkeleton";
 
 const inputClass =
   "w-full rounded-xl border border-slate-600 bg-slate-800 px-4 py-2.5 text-base text-slate-50 placeholder-slate-400 outline-none transition-colors focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/40";
@@ -52,32 +51,12 @@ const triggerClass =
 const labelClass =
   "text-sm font-medium text-slate-300 mb-1.5 flex items-center gap-2";
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.08,
-      delayChildren: 0.1,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 16 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] },
-  },
-};
-
 const AddScholarshipPage = () => {
   const router = useRouter();
   const { data: session, isPending } = authClient.useSession();
   const user = session?.user;
   const userEmail = user?.email;
-  const postedBy = userEmail as string;
+
   if (isPending) {
     return <AddScholarshipSkeleton />;
   }
@@ -87,12 +66,19 @@ const AddScholarshipPage = () => {
     const allFormData = Object.fromEntries(formData.entries());
 
     const scholarshipData: ScholarshipData = {
-      ...allFormData,
-      postedBy,
+      scholarshipName: allFormData.scholarshipName as string,
+      universityName: allFormData.universityName as string,
+      countryName: allFormData.countryName as string,
+      degreeLevel: allFormData.degreeLevel as string,
+      fundingType: allFormData.fundingType as string,
+      deadline: allFormData.deadline as string,
+      amount: allFormData.amount as string,
+      officialLink: allFormData.officialLink as string,
+      bannerImage: allFormData.bannerImage as string,
+      description: allFormData.description as string,
+      postedBy: userEmail as string,
     };
-
     const res = await postScholarShip(scholarshipData);
-
     if (res.insertedId) {
       toast.success(
         <div>
@@ -107,11 +93,7 @@ const AddScholarshipPage = () => {
           icon: "🎉",
         },
       );
-
-      setTimeout(() => {
-        router.push("/scholarships");
-      }, 1200);
-
+      router.push("/myScholarships");
       return;
     }
 
@@ -139,12 +121,7 @@ const AddScholarshipPage = () => {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(148,163,184,0.07)_1px,transparent_0)] bg-size-[32px_32px]" />
 
       <div className="relative mt-20 flex justify-center px-4 pb-20">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="w-full max-w-xl"
-        >
+        <div className="w-full max-w-xl">
           {/* Header */}
           <div className="mb-8 text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-indigo-500/30 bg-indigo-500/10 px-3 py-1 text-xs font-medium text-indigo-300">
@@ -161,15 +138,9 @@ const AddScholarshipPage = () => {
 
           {/* Glass card */}
           <div className="rounded-3xl border border-slate-800/80 bg-slate-900/60 p-6 shadow-2xl shadow-black/40 backdrop-blur-xl sm:p-8">
-            <motion.form
-              onSubmit={handleSubmit}
-              variants={containerVariants}
-              initial="hidden"
-              animate="show"
-              className="flex flex-col gap-5"
-            >
+            <form onSubmit={handleSubmit} className="flex flex-col gap-5">
               {/* Scholarship name */}
-              <motion.div variants={itemVariants}>
+              <div>
                 <TextField
                   isRequired
                   className="w-full"
@@ -186,10 +157,10 @@ const AddScholarshipPage = () => {
                     className={inputClass}
                   />
                 </TextField>
-              </motion.div>
+              </div>
 
               {/* University */}
-              <motion.div variants={itemVariants}>
+              <div>
                 <TextField
                   isRequired
                   className="w-full"
@@ -206,10 +177,10 @@ const AddScholarshipPage = () => {
                     className={inputClass}
                   />
                 </TextField>
-              </motion.div>
+              </div>
 
               {/* Country */}
-              <motion.div variants={itemVariants}>
+              <div>
                 <TextField
                   isRequired
                   className="w-full"
@@ -226,10 +197,10 @@ const AddScholarshipPage = () => {
                     className={inputClass}
                   />
                 </TextField>
-              </motion.div>
+              </div>
 
               {/* Degree level */}
-              <motion.div variants={itemVariants} className="w-full">
+              <div className="w-full">
                 <Select
                   isRequired
                   className="w-full"
@@ -286,10 +257,10 @@ const AddScholarshipPage = () => {
                     </ListBox>
                   </Select.Popover>
                 </Select>
-              </motion.div>
+              </div>
 
               {/* Funding Type */}
-              <motion.div variants={itemVariants} className="w-full">
+              <div className="w-full">
                 <Select
                   isRequired
                   className="w-full"
@@ -337,10 +308,10 @@ const AddScholarshipPage = () => {
                     </ListBox>
                   </Select.Popover>
                 </Select>
-              </motion.div>
+              </div>
 
               {/* Deadline */}
-              <motion.div variants={itemVariants} className="w-full">
+              <div className="w-full">
                 <DatePicker className="w-full" name="deadline" isRequired>
                   <Label className={labelClass}>
                     <CalendarClock size={15} className="text-indigo-400" />
@@ -389,10 +360,10 @@ const AddScholarshipPage = () => {
                     </Dialog>
                   </Popover>
                 </DatePicker>
-              </motion.div>
+              </div>
 
               {/* Amount */}
-              <motion.div variants={itemVariants}>
+              <div>
                 <TextField
                   isRequired
                   className="w-full"
@@ -406,10 +377,10 @@ const AddScholarshipPage = () => {
                   </Label>
                   <Input placeholder="Enter amount" className={inputClass} />
                 </TextField>
-              </motion.div>
+              </div>
 
               {/* Official Link */}
-              <motion.div variants={itemVariants}>
+              <div>
                 <TextField
                   isRequired
                   className="w-full"
@@ -423,10 +394,10 @@ const AddScholarshipPage = () => {
                   </Label>
                   <Input placeholder="https://" className={inputClass} />
                 </TextField>
-              </motion.div>
+              </div>
 
               {/* Banner Image */}
-              <motion.div variants={itemVariants}>
+              <div>
                 <TextField
                   isRequired
                   className="w-full"
@@ -440,10 +411,10 @@ const AddScholarshipPage = () => {
                   </Label>
                   <Input placeholder="https://" className={inputClass} />
                 </TextField>
-              </motion.div>
+              </div>
 
               {/* Description */}
-              <motion.div variants={itemVariants} className="flex flex-col">
+              <div className="flex flex-col">
                 <Label className={labelClass}>
                   <FileText size={15} className="text-indigo-400" />
                   Description
@@ -455,13 +426,10 @@ const AddScholarshipPage = () => {
                   placeholder="Tell us about the scholarship — coverage, eligibility, and what makes it worth applying for."
                   name="description"
                 />
-              </motion.div>
+              </div>
 
               {/* Actions */}
-              <motion.div
-                variants={itemVariants}
-                className="mt-2 flex items-center justify-end gap-3 border-t border-slate-800/80 pt-6"
-              >
+              <div className="mt-2 flex items-center justify-end gap-3 border-t border-slate-800/80 pt-6">
                 <Link href="/">
                   {" "}
                   <Button
@@ -478,10 +446,10 @@ const AddScholarshipPage = () => {
                 >
                   Submit Scholarship
                 </Button>
-              </motion.div>
-            </motion.form>
+              </div>
+            </form>
           </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );
