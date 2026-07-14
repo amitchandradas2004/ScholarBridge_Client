@@ -118,7 +118,7 @@ const AddScholarshipPage = () => {
       {/* Ambient background glow */}
       <div className="pointer-events-none absolute -top-40 -left-40 h-96 w-96 rounded-full bg-indigo-600/20 blur-3xl" />
       <div className="pointer-events-none absolute top-1/3 -right-40 h-96 w-96 rounded-full bg-slate-600/10 blur-3xl" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(148,163,184,0.07)_1px,transparent_0)] bg-size-[32px_32px]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-linear(circle_at_1px_1px,rgba(148,163,184,0.07)_1px,transparent_0)] bg-size-[32px_32px]" />
 
       <div className="relative mt-20 flex justify-center px-4 pb-20">
         <div className="w-full max-w-xl">

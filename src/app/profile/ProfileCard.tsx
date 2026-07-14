@@ -1,9 +1,8 @@
 "use client";
 import { Scholarship, User } from "@/types/scholarship";
-import { Button } from "@heroui/react";
 import { Calendar, Mail, ShieldCheck } from "lucide-react";
 import Image from "next/image";
-import { FaUser } from "react-icons/fa6";
+import { FaUser, FaUserGraduate } from "react-icons/fa6";
 interface ProfileCardProps {
   user: User;
   myScholarships: Scholarship[];
@@ -23,22 +22,23 @@ const ProfileCard = ({ user, myScholarships }: ProfileCardProps) => {
 
         <div className="overflow-hidden rounded-3xl border border-slate-800 bg-slate-900 shadow-xl">
           {/* Cover */}
-          <div className="h-40 bg-gradient-to-r from-indigo-700 via-indigo-600 to-cyan-600" />
+          <div className="h-40 bg-linear-to-r from-indigo-700 via-indigo-600 to-cyan-600" />
 
           {/* Profile */}
           <div className="relative px-8 pb-8">
             <div className="-mt-16 flex flex-col items-start gap-6 md:flex-row md:items-end md:justify-between">
               <div className="flex flex-col items-center gap-5 md:flex-row">
-                <div className="relative h-32 w-32 overflow-hidden rounded-full border-4 border-slate-900 bg-slate-800">
-                  <Image
-                    src={
-                      user?.image ||
-                      "https://ui-avatars.com/api/?name=User&background=4f46e5&color=fff"
-                    }
-                    alt={user?.name ?? "User"}
-                    fill
-                    className="object-cover"
-                  />
+                <div className="relative flex h-32 w-32 items-center justify-center overflow-hidden rounded-full border-4 border-slate-900 bg-slate-800">
+                  {user?.image ? (
+                    <Image
+                      src={user.image}
+                      alt={user.name ?? "User"}
+                      fill
+                      className="object-cover"
+                    />
+                  ) : (
+                    <FaUserGraduate className="h-16 w-16 text-slate-400" />
+                  )}
                 </div>
 
                 <div>

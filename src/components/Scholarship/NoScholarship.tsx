@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { GraduationCap, Plus, SearchX } from "lucide-react";
 import Link from "next/link";
-import { GraduationCap, SearchX, Plus } from "lucide-react";
 
 const NoScholarship = () => {
   return (
@@ -22,7 +22,7 @@ const NoScholarship = () => {
             duration: 3,
             repeat: Infinity,
           }}
-          className="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br from-indigo-600/20 to-cyan-500/20"
+          className="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-linear-to-br from-indigo-600/20 to-cyan-500/20"
         >
           <SearchX className="h-12 w-12 text-indigo-400" />
         </motion.div>
@@ -33,8 +33,8 @@ const NoScholarship = () => {
         </h2>
 
         <p className="mx-auto mt-4 max-w-lg leading-7 text-slate-400">
-          We could not find any scholarships at the moment. New opportunities are
-          added regularly, so check back later or contribute by adding one.
+          We could not find any scholarships at the moment. New opportunities
+          are added regularly, so check back later or contribute by adding one.
         </p>
 
         {/* Decorative Badge */}
@@ -59,7 +59,7 @@ const NoScholarship = () => {
             <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              className="flex cursor-pointer items-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-500 px-6 py-3 font-semibold text-white shadow-lg shadow-indigo-600/20 transition hover:shadow-indigo-600/40"
+              className="flex cursor-pointer items-center gap-2 rounded-xl bg-linear-to-r from-indigo-600 to-cyan-500 px-6 py-3 font-semibold text-white shadow-lg shadow-indigo-600/20 transition hover:shadow-indigo-600/40"
             >
               <Plus size={18} />
               Add Scholarship

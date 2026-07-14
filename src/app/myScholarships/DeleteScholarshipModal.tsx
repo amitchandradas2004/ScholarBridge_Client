@@ -11,7 +11,6 @@ export function DeleteScholarshipModal({
 }: {
   scholarship: Scholarship;
 }) {
-  console.log(scholarship, "sss");
   const id = scholarship._id;
   const handleDelete = async () => {
     const res = await deleteScholarship(id);

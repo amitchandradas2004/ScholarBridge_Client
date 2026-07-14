@@ -74,7 +74,11 @@ export default function SignupPage() {
       toast.error(error?.message as string);
     }
   };
-
+  const handleGoogleSignIn = async () => {
+    await authClient.signIn.social({
+      provider: "google",
+    });
+  };
   return (
     <section
       className={`${inter.className} relative flex min-h-screen items-center justify-center overflow-hidden bg-linear-to-br from-slate-50 via-indigo-50 to-cyan-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 px-6 py-24 transition-colors duration-500`}
@@ -383,6 +387,7 @@ export default function SignupPage() {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             type="button"
+            onClick={handleGoogleSignIn}
             className="flex w-full cursor-pointer items-center justify-center gap-3 rounded-2xl border border-slate-200 bg-white py-4 font-semibold text-slate-700 transition hover:border-indigo-400 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:border-indigo-500 dark:hover:bg-slate-700"
           >
             <FcGoogle className="text-2xl" />
