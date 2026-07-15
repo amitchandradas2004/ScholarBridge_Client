@@ -7,6 +7,7 @@ import DegreeFilter from "./DegreeFilter";
 import FundingFilter from "./FundingFilter";
 import SearchNotFound from "./SearchNotFound";
 import SearchScholarship from "./SearchScholarship";
+import SortScholarship from "./SortScholarship";
 
 interface PageProps {
   searchParams: Promise<{
@@ -14,6 +15,7 @@ interface PageProps {
     search?: string;
     degreeLevel?: string;
     fundingType?: string;
+    sort?: string;
   }>;
 }
 
@@ -23,13 +25,20 @@ const ScholarShipsPage = async ({ searchParams }: PageProps) => {
     search = "",
     degreeLevel = "",
     fundingType = "",
+    sort = "",
   } = await searchParams;
 
   const {
     data: allScholarships,
     currentPage,
     totalPages,
-  } = await getAllScholarships(Number(page), search, degreeLevel, fundingType);
+  } = await getAllScholarships(
+    Number(page),
+    search,
+    degreeLevel,
+    fundingType,
+    sort,
+  );
 
   const visiblePages = 4;
 
@@ -57,7 +66,9 @@ const ScholarShipsPage = async ({ searchParams }: PageProps) => {
     if (degreeLevel) params.set("degreeLevel", degreeLevel);
 
     if (fundingType) params.set("fundingType", fundingType);
-
+    if (sort) {
+      params.set("sort", sort);
+    }
     return params.toString();
   };
 
@@ -71,6 +82,8 @@ const ScholarShipsPage = async ({ searchParams }: PageProps) => {
         <div className="my-8 flex flex-col gap-5 md:flex-row md:justify-between">
           <DegreeFilter />
           <FundingFilter />
+
+          <SortScholarship />
         </div>
 
         {allScholarships.length === 0 ? (

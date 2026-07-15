@@ -17,6 +17,7 @@ export const getAllScholarships = async (
   search: string = "",
   degreeLevel: string = "",
   fundingType: string = "",
+  sort: string = "",
 ): Promise<ScholarshipResponse> => {
   const params = new URLSearchParams();
 
@@ -34,6 +35,10 @@ export const getAllScholarships = async (
     params.set("fundingType", fundingType);
   }
 
+  if (sort.trim()) {
+    params.set("sort", sort);
+  }
+
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_SERVER_URL}/api/scholarship?${params.toString()}`,
     {
@@ -47,6 +52,7 @@ export const getAllScholarships = async (
 
   return res.json();
 };
+
 export const getScholarshipDetails = async (id: string) => {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_SERVER_URL}/api/scholarship/${id}`,
