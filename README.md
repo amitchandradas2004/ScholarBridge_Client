@@ -19,13 +19,13 @@ Discover • Save • Apply • Achieve
 Experience the live version of ScholarBridge:
 
 <p align="center">
-  <a href="YOUR_LIVE_DEMO_URL">
+  <a href="https://scholarbridge-client.vercel.app">
     <img src="https://img.shields.io/badge/Live%20Demo-Visit%20Website-6366F1?style=for-the-badge&logo=vercel&logoColor=white" />
   </a>
 </p>
 
 🔗 **Live Website:**  
-YOUR_LIVE_DEMO_URL
+[Click Here](https://scholarbridge-client.vercel.app)
 
 ### Demo Features
 
