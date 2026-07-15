@@ -1,26 +1,35 @@
 import NoScholarship from "@/components/Scholarship/NoScholarship";
 import ScholarshipCard from "@/components/Scholarship/ScholarshipCard";
 import { getAllScholarships } from "@/lib/api/scholarship";
-import { Pagination, Table, SearchField, Label } from "@heroui/react";
+import { Pagination, Table } from "@heroui/react";
 import Link from "next/link";
-import SearchScholarship from "./SearchScholarship";
+import DegreeFilter from "./DegreeFilter";
+import FundingFilter from "./FundingFilter";
 import SearchNotFound from "./SearchNotFound";
+import SearchScholarship from "./SearchScholarship";
 
 interface PageProps {
   searchParams: Promise<{
     page?: string;
     search?: string;
+    degreeLevel?: string;
+    fundingType?: string;
   }>;
 }
 
 const ScholarShipsPage = async ({ searchParams }: PageProps) => {
-  const { page = "1", search = "" } = await searchParams;
+  const {
+    page = "1",
+    search = "",
+    degreeLevel = "",
+    fundingType = "",
+  } = await searchParams;
 
   const {
     data: allScholarships,
     currentPage,
     totalPages,
-  } = await getAllScholarships(Number(page), search);
+  } = await getAllScholarships(Number(page), search, degreeLevel, fundingType);
 
   const visiblePages = 4;
 
@@ -28,33 +37,57 @@ const ScholarShipsPage = async ({ searchParams }: PageProps) => {
 
   let endPage = Math.min(totalPages, startPage + visiblePages - 1);
 
-  // Adjust when we're near the end
   if (endPage - startPage + 1 < visiblePages) {
     startPage = Math.max(1, endPage - visiblePages + 1);
     endPage = Math.min(totalPages, startPage + visiblePages - 1);
   }
+
   const pages = Array.from(
     { length: endPage - startPage + 1 },
     (_, index) => startPage + index,
   );
 
+  const createQueryString = (pageNumber: number) => {
+    const params = new URLSearchParams();
+
+    params.set("page", pageNumber.toString());
+
+    if (search) params.set("search", search);
+
+    if (degreeLevel) params.set("degreeLevel", degreeLevel);
+
+    if (fundingType) params.set("fundingType", fundingType);
+
+    return params.toString();
+  };
+
   return (
-    <main className="  min-h-screen bg-slate-950 py-25">
-      <div className="mx-auto max-w-7xl px-5">
+    <main className="min-h-screen bg-slate-950 pt-24 pb-16">
+      <div className="mx-auto max-w-7xl px-4">
+        {/* Search */}
+        <SearchScholarship />
+
+        {/* Filters */}
+        <div className="my-8 flex flex-col gap-5 md:flex-row md:justify-between">
+          <DegreeFilter />
+          <FundingFilter />
+        </div>
+
         {allScholarships.length === 0 ? (
-          search ? (
+          search || degreeLevel || fundingType ? (
             <SearchNotFound search={search} />
           ) : (
             <NoScholarship />
           )
         ) : (
           <>
-            {/* Search Bar */}
-            <SearchScholarship />
             {/* Heading */}
             <div className="mb-10">
               <h1 className="text-4xl font-bold text-white">
-                Explore Scholarships : {allScholarships.length}
+                Explore Scholarships{" "}
+                <span className="text-indigo-400">
+                  ({allScholarships.length})
+                </span>
               </h1>
 
               <p className="mt-3 text-slate-400">
@@ -62,7 +95,7 @@ const ScholarShipsPage = async ({ searchParams }: PageProps) => {
               </p>
             </div>
 
-            {/* Scholarship Cards */}
+            {/* Cards */}
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {allScholarships.map((scholarship) => (
                 <ScholarshipCard
@@ -76,13 +109,11 @@ const ScholarShipsPage = async ({ searchParams }: PageProps) => {
             <Table.Footer className="overflow-x-auto py-12">
               <Pagination size="sm" className="flex justify-center">
                 <Pagination.Content>
-                  {/* Previous */}
                   <Pagination.Item>
                     <Link
-                      href={`/scholarships?page=${Math.max(
-                        1,
-                        currentPage - 1,
-                      )}${search ? `&search=${encodeURIComponent(search)}` : ""}`}
+                      href={`/scholarships?${createQueryString(
+                        Math.max(1, currentPage - 1),
+                      )}`}
                     >
                       <Pagination.Previous isDisabled={currentPage === 1}>
                         <Pagination.PreviousIcon />
@@ -91,14 +122,9 @@ const ScholarShipsPage = async ({ searchParams }: PageProps) => {
                     </Link>
                   </Pagination.Item>
 
-                  {/* Page Numbers */}
                   {pages.map((p) => (
                     <Pagination.Item key={p}>
-                      <Link
-                        href={`/scholarships?page=${p}${
-                          search ? `&search=${encodeURIComponent(search)}` : ""
-                        }`}
-                      >
+                      <Link href={`/scholarships?${createQueryString(p)}`}>
                         <Pagination.Link
                           isActive={p === currentPage}
                           className={
@@ -113,13 +139,11 @@ const ScholarShipsPage = async ({ searchParams }: PageProps) => {
                     </Pagination.Item>
                   ))}
 
-                  {/* Next */}
                   <Pagination.Item>
                     <Link
-                      href={`/scholarships?page=${Math.min(
-                        totalPages,
-                        currentPage + 1,
-                      )}${search ? `&search=${encodeURIComponent(search)}` : ""}`}
+                      href={`/scholarships?${createQueryString(
+                        Math.min(totalPages, currentPage + 1),
+                      )}`}
                     >
                       <Pagination.Next isDisabled={currentPage === totalPages}>
                         Next

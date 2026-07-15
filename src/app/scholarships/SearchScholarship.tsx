@@ -31,7 +31,7 @@ const SearchScholarship = () => {
         onSubmit={handleSearch}
         className="flex-1"
       >
-        <Label>Search (By Scholarship Name)</Label>
+        <Label>Search By Scholarship Name and University Name </Label>
 
         <SearchField.Group>
           <SearchField.SearchIcon />

@@ -15,6 +15,8 @@ import { ScholarshipResponse } from "@/types/scholarship";
 export const getAllScholarships = async (
   page: number = 1,
   search: string = "",
+  degreeLevel: string = "",
+  fundingType: string = "",
 ): Promise<ScholarshipResponse> => {
   const params = new URLSearchParams();
 
@@ -22,6 +24,14 @@ export const getAllScholarships = async (
 
   if (search.trim()) {
     params.set("search", search.trim());
+  }
+
+  if (degreeLevel.trim()) {
+    params.set("degreeLevel", degreeLevel);
+  }
+
+  if (fundingType.trim()) {
+    params.set("fundingType", fundingType);
   }
 
   const res = await fetch(
