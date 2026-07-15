@@ -1,23 +1,26 @@
 import NoScholarship from "@/components/Scholarship/NoScholarship";
 import ScholarshipCard from "@/components/Scholarship/ScholarshipCard";
 import { getAllScholarships } from "@/lib/api/scholarship";
-import { Pagination, Table } from "@heroui/react";
+import { Pagination, Table, SearchField, Label } from "@heroui/react";
 import Link from "next/link";
+import SearchScholarship from "./SearchScholarship";
+import SearchNotFound from "./SearchNotFound";
 
 interface PageProps {
   searchParams: Promise<{
     page?: string;
+    search?: string;
   }>;
 }
 
 const ScholarShipsPage = async ({ searchParams }: PageProps) => {
-  const { page = "1" } = await searchParams;
+  const { page = "1", search = "" } = await searchParams;
 
   const {
     data: allScholarships,
     currentPage,
     totalPages,
-  } = await getAllScholarships(Number(page));
+  } = await getAllScholarships(Number(page), search);
 
   const visiblePages = 4;
 
@@ -30,7 +33,6 @@ const ScholarShipsPage = async ({ searchParams }: PageProps) => {
     startPage = Math.max(1, endPage - visiblePages + 1);
     endPage = Math.min(totalPages, startPage + visiblePages - 1);
   }
-
   const pages = Array.from(
     { length: endPage - startPage + 1 },
     (_, index) => startPage + index,
@@ -40,9 +42,15 @@ const ScholarShipsPage = async ({ searchParams }: PageProps) => {
     <main className="  min-h-screen bg-slate-950 py-25">
       <div className="mx-auto max-w-7xl px-5">
         {allScholarships.length === 0 ? (
-          <NoScholarship />
+          search ? (
+            <SearchNotFound search={search} />
+          ) : (
+            <NoScholarship />
+          )
         ) : (
           <>
+            {/* Search Bar */}
+            <SearchScholarship />
             {/* Heading */}
             <div className="mb-10">
               <h1 className="text-4xl font-bold text-white">
@@ -74,7 +82,7 @@ const ScholarShipsPage = async ({ searchParams }: PageProps) => {
                       href={`/scholarships?page=${Math.max(
                         1,
                         currentPage - 1,
-                      )}`}
+                      )}${search ? `&search=${encodeURIComponent(search)}` : ""}`}
                     >
                       <Pagination.Previous isDisabled={currentPage === 1}>
                         <Pagination.PreviousIcon />
@@ -86,7 +94,11 @@ const ScholarShipsPage = async ({ searchParams }: PageProps) => {
                   {/* Page Numbers */}
                   {pages.map((p) => (
                     <Pagination.Item key={p}>
-                      <Link href={`/scholarships?page=${p}`}>
+                      <Link
+                        href={`/scholarships?page=${p}${
+                          search ? `&search=${encodeURIComponent(search)}` : ""
+                        }`}
+                      >
                         <Pagination.Link
                           isActive={p === currentPage}
                           className={
@@ -107,7 +119,7 @@ const ScholarShipsPage = async ({ searchParams }: PageProps) => {
                       href={`/scholarships?page=${Math.min(
                         totalPages,
                         currentPage + 1,
-                      )}`}
+                      )}${search ? `&search=${encodeURIComponent(search)}` : ""}`}
                     >
                       <Pagination.Next isDisabled={currentPage === totalPages}>
                         Next
