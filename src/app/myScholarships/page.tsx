@@ -14,7 +14,7 @@ const MyScholarShipPage = async () => {
   }
 
   const myScholarships = await getMyScholarships(session?.user?.email);
-
+  console.log(session?.user?.email);
   if (myScholarships.length === 0) {
     return <NoScholarship />;
   }
