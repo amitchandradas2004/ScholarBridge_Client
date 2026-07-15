@@ -115,7 +115,7 @@ export default function PopularCountries() {
 
         {/* Cards */}
 
-        <div className="relative mt-16 grid grid-cols-1 gap-6 px-6 sm:grid-cols-2 md:px-0 lg:grid-cols-4">
+        <div className="relative mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 md:px-0 lg:grid-cols-4">
           {countries.map((country, index) => (
             <motion.div
               key={country.name}

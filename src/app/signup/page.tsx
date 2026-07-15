@@ -81,7 +81,7 @@ export default function SignupPage() {
   };
   return (
     <section
-      className={`${inter.className} relative flex min-h-screen items-center justify-center overflow-hidden bg-linear-to-br from-slate-50 via-indigo-50 to-cyan-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 px-6 py-24 transition-colors duration-500`}
+      className={`${inter.className} relative flex min-h-screen items-center justify-center overflow-hidden bg-linear-to-br from-slate-50 via-indigo-50 to-cyan-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 px-2 py-24 transition-colors duration-500`}
     >
       {/* Background Glow */}
 
@@ -222,16 +222,16 @@ export default function SignupPage() {
           transition={{
             duration: 0.7,
           }}
-          className="rounded-4xl border border-white/60 bg-white/80 p-8 shadow-2xl backdrop-blur-xl dark:border-slate-700/60 dark:bg-slate-900/80 md:p-10"
+          className="rounded-4xl border border-white/60 bg-white/80 p-5 shadow-2xl backdrop-blur-xl dark:border-slate-700/60 dark:bg-slate-900/80 md:p-10"
         >
           <div className="text-center">
             <h2
-              className={`${sora.className} text-4xl font-black text-slate-900 dark:text-white`}
+              className={`${sora.className}  text-2xl md:text-4xl font-black text-slate-900 dark:text-white`}
             >
               Create Account
             </h2>
 
-            <p className="mt-3 text-slate-600 dark:text-slate-400">
+            <p className="mt-3 text-xs md:text-lg text-slate-600 dark:text-slate-400">
               Join ScholarBridge for free today.
             </p>
           </div>
@@ -242,7 +242,7 @@ export default function SignupPage() {
             {/* Name */}
 
             <div>
-              <label className="mb-2 block font-medium text-slate-700 dark:text-slate-300">
+              <label className="mb-2 block font-medium text-slate-700 dark:text-slate-300 text-xs lg:text-lg">
                 Full Name
               </label>
 
@@ -254,7 +254,7 @@ export default function SignupPage() {
                   name="name"
                   type="text"
                   placeholder="John Doe"
-                  className="w-full rounded-2xl border border-slate-200 bg-white py-4 pl-12 pr-4 text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:placeholder:text-slate-500 dark:focus:ring-indigo-900"
+                  className="w-full rounded-2xl border border-slate-200 bg-white py-2 md:py-4 pl-12 pr-4 text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:placeholder:text-slate-500 dark:focus:ring-indigo-900"
                 />
               </div>
             </div>
@@ -262,7 +262,7 @@ export default function SignupPage() {
             {/* Email */}
 
             <div>
-              <label className="mb-2 block font-medium text-slate-700 dark:text-slate-300">
+              <label className="mb-2 block font-medium text-slate-700 dark:text-slate-300 text-xs lg:text-lg">
                 Email Address
               </label>
 
@@ -274,7 +274,7 @@ export default function SignupPage() {
                   name="email"
                   type="email"
                   placeholder="you@example.com"
-                  className="w-full rounded-2xl border border-slate-200 bg-white py-4 pl-12 pr-4 text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:placeholder:text-slate-500 dark:focus:ring-indigo-900"
+                  className="w-full rounded-2xl border border-slate-200 bg-white py-2 md:py-4 pl-12 pr-4 text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:placeholder:text-slate-500 dark:focus:ring-indigo-900"
                 />
               </div>
             </div>
@@ -282,7 +282,7 @@ export default function SignupPage() {
             {/* Password */}
 
             <div>
-              <label className="mb-2 block font-medium text-slate-700 dark:text-slate-300">
+              <label className="mb-2 block font-medium text-slate-700 dark:text-slate-300 text-xs lg:text-lg">
                 Password
               </label>
 
@@ -294,7 +294,7 @@ export default function SignupPage() {
                   name="password"
                   type={showPassword ? "text" : "password"}
                   placeholder="••••••••"
-                  className="w-full rounded-2xl border border-slate-200 bg-white py-4 pl-12 pr-14 text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:placeholder:text-slate-500 dark:focus:ring-indigo-900"
+                  className="w-full rounded-2xl border border-slate-200 bg-white py-2 md:py-4 pl-12 pr-14 text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:placeholder:text-slate-500 dark:focus:ring-indigo-900"
                 />
 
                 <button
@@ -314,7 +314,7 @@ export default function SignupPage() {
             {/* Image URL */}
 
             <div>
-              <label className="mb-2 block font-medium text-slate-700 dark:text-slate-300">
+              <label className="mb-2 block font-medium text-slate-700 dark:text-slate-300 text-xs lg:text-lg">
                 Profile Image URL
               </label>
 
@@ -326,7 +326,7 @@ export default function SignupPage() {
                   name="image"
                   type="url"
                   placeholder="https://example.com/photo.jpg"
-                  className="w-full rounded-2xl border border-slate-200 bg-white py-4 pl-12 pr-4 text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:placeholder:text-slate-500 dark:focus:ring-indigo-900"
+                  className="w-full rounded-2xl border border-slate-200 bg-white py-2 md:py-4 pl-12 pr-4 text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:placeholder:text-slate-500 dark:focus:ring-indigo-900"
                 />
               </div>
             </div>
@@ -340,7 +340,7 @@ export default function SignupPage() {
                 className="checkbox checkbox-primary mt-1"
               />
 
-              <span className="text-sm leading-6 text-slate-600 dark:text-slate-400">
+              <span className="text-xs lg:text-lg leading-6 text-slate-600 dark:text-slate-400">
                 I agree to the{" "}
                 <Link
                   href="/"
@@ -365,7 +365,7 @@ export default function SignupPage() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               type="submit"
-              className="w-full cursor-pointer rounded-2xl bg-linear-to-r from-indigo-600 via-blue-600 to-cyan-500 py-4 font-semibold text-white shadow-lg transition hover:shadow-xl"
+              className="w-full cursor-pointer rounded-2xl bg-linear-to-r from-indigo-600 via-blue-600 to-cyan-500 py-3 md:py-4 font-semibold text-white shadow-lg transition hover:shadow-xl"
             >
               Create Account
             </motion.button>
@@ -388,7 +388,7 @@ export default function SignupPage() {
             whileTap={{ scale: 0.98 }}
             type="button"
             onClick={handleGoogleSignIn}
-            className="flex w-full cursor-pointer items-center justify-center gap-3 rounded-2xl border border-slate-200 bg-white py-4 font-semibold text-slate-700 transition hover:border-indigo-400 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:border-indigo-500 dark:hover:bg-slate-700"
+            className="flex w-full cursor-pointer items-center justify-center gap-3 rounded-2xl border border-slate-200 bg-white py-3 md:py-4 font-semibold text-slate-700 transition hover:border-indigo-400 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:border-indigo-500 dark:hover:bg-slate-700"
           >
             <FcGoogle className="text-2xl" />
             Continue with Google
@@ -396,7 +396,7 @@ export default function SignupPage() {
 
           {/* Login */}
 
-          <p className="pt-6 text-center text-slate-600 dark:text-slate-400">
+          <p className="pt-6 text-xs lg:text-lg text-center text-slate-600 dark:text-slate-400">
             Already have an account?{" "}
             <Link
               href="/login"

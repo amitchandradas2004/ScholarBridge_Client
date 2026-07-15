@@ -1,5 +1,6 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import { motion } from "framer-motion";
 import { Inter, Sora } from "next/font/google";
 import Link from "next/link";
@@ -14,7 +15,10 @@ export const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
 });
+
 export default function Banner() {
+  const session = authClient.useSession();
+
   return (
     <section className="relative overflow-hidden bg-[#0B1120]">
       {/* Background Glow */}
@@ -41,7 +45,7 @@ export default function Banner() {
             duration: 12,
             repeat: Infinity,
           }}
-          className="absolute bottom-0 right-0 h-[32rem] w-[32rem] rounded-full bg-cyan-500 blur-[140px]"
+          className="absolute bottom-0 right-0 h-128 w-lg rounded-full bg-cyan-500 blur-[140px]"
         />
 
         <div className="absolute inset-0 bg-[radial-linear(circle_at_top,rgba(99,102,241,0.08),transparent_60%)]" />
@@ -98,18 +102,22 @@ export default function Banner() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7 }}
-            className="mt-10 flex flex-wrap items-center gap-5"
+            className="mt-10 space-y-3 flex flex-wrap items-center gap-5"
           >
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Link
-                href="/signup"
-                className="inline-flex items-center gap-2 rounded-xl bg-linear-to-r from-indigo-600 to-cyan-500 px-7 py-4 font-semibold text-white shadow-[0_10px_40px_rgba(79,70,229,0.45)] transition hover:from-indigo-500 hover:to-cyan-400"
+            {!session?.data?.user && (
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                Get Started
-                <HiArrowRight />
-              </Link>
-            </motion.div>
-
+                <Link
+                  href="/signup"
+                  className="inline-flex items-center gap-2 rounded-xl bg-linear-to-r from-indigo-600 to-cyan-500 px-7 py-4 font-semibold text-white shadow-[0_10px_40px_rgba(79,70,229,0.45)] transition hover:from-indigo-500 hover:to-cyan-400"
+                >
+                  Get Started
+                  <HiArrowRight />
+                </Link>
+              </motion.div>
+            )}
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
                 href="/scholarships"

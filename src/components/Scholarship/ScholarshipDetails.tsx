@@ -28,7 +28,7 @@ const ScholarshipDetails = ({ scholarship }: ScholarshipDetailsProps) => {
   };
 
   return (
-    <section className="mx-auto container py-15 px-5">
+    <section className="mx-auto container py-15 px-2 md:px-5">
       <div className="overflow-hidden rounded-3xl border border-slate-800 bg-slate-900 shadow-2xl">
         <div className="relative h-62.5 w-full md:h-100">
           <Image
@@ -42,7 +42,7 @@ const ScholarshipDetails = ({ scholarship }: ScholarshipDetailsProps) => {
 
         <div className="space-y-10 p-8 md:p-12">
           <div>
-            <h1 className="text-4xl font-bold text-white">
+            <h1 className="text-2xl md:text-4xl font-bold text-white">
               {scholarship.scholarshipName}
             </h1>
 
@@ -52,7 +52,7 @@ const ScholarshipDetails = ({ scholarship }: ScholarshipDetailsProps) => {
             </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             <InfoCard
               icon={<Globe size={20} />}
               title="Country"

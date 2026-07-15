@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import Link from "next/link";
 import { useState } from "react";
 import { HiMinus, HiPlus } from "react-icons/hi2";
 
@@ -89,8 +90,8 @@ export default function FAQ() {
           </h2>
 
           <p className="font-body mt-6 text-lg leading-8 text-slate-400">
-            Have questions? We've answered the most common ones to help you get
-            started with ScholarBridge.
+            Have questions? We have answered the most common ones to help you
+            get started with ScholarBridge.
           </p>
         </motion.div>
 
@@ -206,17 +207,20 @@ export default function FAQ() {
               anytime.
             </p>
 
-            <motion.button
-              whileHover={{
-                scale: 1.05,
-              }}
-              whileTap={{
-                scale: 0.96,
-              }}
-              className="mt-8 rounded-full bg-indigo-600 px-8 py-4 font-semibold text-white shadow-lg shadow-indigo-600/30 transition-all duration-300 hover:bg-indigo-500"
-            >
-              Contact Us
-            </motion.button>
+            <Link href="/contact">
+              {" "}
+              <motion.button
+                whileHover={{
+                  scale: 1.05,
+                }}
+                whileTap={{
+                  scale: 0.96,
+                }}
+                className="mt-8 rounded-full bg-indigo-600 px-8 py-4 font-semibold text-white shadow-lg shadow-indigo-600/30 transition-all duration-300 hover:bg-indigo-500 cursor-pointer"
+              >
+                Contact Us
+              </motion.button>
+            </Link>
           </div>
         </motion.div>
       </div>
