@@ -30,8 +30,8 @@ const resources = [
 const legal = [
   { name: "Privacy Policy", href: "/" },
   { name: "Terms & Conditions", href: "/" },
-  { name: "Cookies", href: "/" },
-  { name: "Support", href: "/" },
+  { name: "Contact", href: "/contact" },
+  { name: "Support", href: "/support" },
 ];
 
 const socials = [

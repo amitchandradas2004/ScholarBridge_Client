@@ -121,7 +121,7 @@ const AddScholarshipPage = () => {
       <div className="pointer-events-none absolute inset-0 bg-[radial-linear(circle_at_1px_1px,rgba(148,163,184,0.07)_1px,transparent_0)] bg-size-[32px_32px]" />
 
       <div className="relative mt-20 flex justify-center px-4 pb-20">
-        <div className="w-full max-w-xl">
+        <div className="w-full max-w-2xl">
           {/* Header */}
           <div className="mb-8 text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-indigo-500/30 bg-indigo-500/10 px-3 py-1 text-xs font-medium text-indigo-300">

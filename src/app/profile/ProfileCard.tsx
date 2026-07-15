@@ -10,7 +10,7 @@ interface ProfileCardProps {
 const ProfileCard = ({ user, myScholarships }: ProfileCardProps) => {
   return (
     <main className="min-h-screen bg-slate-950 px-4 py-28">
-      <div className="mx-auto max-w-5xl">
+      <div className="mx-auto container">
         {/* Heading */}
         <div className="mb-10">
           <h1 className="text-4xl font-bold text-white">My Profile</h1>

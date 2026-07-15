@@ -74,7 +74,7 @@ const ScholarShipsPage = async ({ searchParams }: PageProps) => {
 
   return (
     <main className="min-h-screen bg-slate-950 pt-24 pb-16">
-      <div className="mx-auto max-w-7xl px-4">
+      <div className="mx-auto container px-4">
         {/* Search */}
         <SearchScholarship />
 
