@@ -6,7 +6,7 @@ import PopularCountries from "@/components/Homepage/PopularCountries";
 import Statistics from "@/components/Homepage/Statistics";
 import SuccessStories from "@/components/Homepage/SuccessStories";
 import Support from "@/components/Support/Support";
-
+import PrivacyPolicyPage from "@/components/Homepage/PrivacyPolicyPage";
 export default function Home() {
   return (
     <div>
@@ -17,6 +17,7 @@ export default function Home() {
       <SuccessStories />
       <Contact />
       <Support />
+      <PrivacyPolicyPage/>
       <FAQ />
     </div>
   );

@@ -28,7 +28,7 @@ const resources = [
 ];
 
 const legal = [
-  { name: "Privacy Policy", href: "/" },
+  { name: "Privacy Policy", href: "/privacyPolicyPage" },
   { name: "Terms & Conditions", href: "/" },
   { name: "Contact", href: "/contact" },
   { name: "Support", href: "/support" },
