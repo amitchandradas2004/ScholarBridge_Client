@@ -1,9 +1,9 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
-import { motion } from "framer-motion";
 import Logo from "@/Assets/logo.png";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
 
 import {
   FaFacebookF,
@@ -12,7 +12,7 @@ import {
   FaXTwitter,
 } from "react-icons/fa6";
 
-import { HiEnvelope, HiMapPin, HiPhone, HiArrowRight } from "react-icons/hi2";
+import { HiArrowRight, HiEnvelope, HiMapPin, HiPhone } from "react-icons/hi2";
 
 const quickLinks = [
   { name: "Home", href: "/" },
@@ -29,7 +29,7 @@ const resources = [
 
 const legal = [
   { name: "Privacy Policy", href: "/privacyPolicyPage" },
-  { name: "Terms & Conditions", href: "/" },
+  { name: "Terms & Conditions", href: "/termsAndConditions" },
   { name: "Contact", href: "/contact" },
   { name: "Support", href: "/support" },
 ];

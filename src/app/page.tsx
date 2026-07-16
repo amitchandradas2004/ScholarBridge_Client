@@ -7,6 +7,7 @@ import Statistics from "@/components/Homepage/Statistics";
 import SuccessStories from "@/components/Homepage/SuccessStories";
 import Support from "@/components/Support/Support";
 import PrivacyPolicyPage from "@/components/Homepage/PrivacyPolicyPage";
+import TermsAndConditionsPage from "@/components/Homepage/TermsAndConditionsPage";
 export default function Home() {
   return (
     <div>
@@ -17,7 +18,8 @@ export default function Home() {
       <SuccessStories />
       <Contact />
       <Support />
-      <PrivacyPolicyPage/>
+      <PrivacyPolicyPage />
+      <TermsAndConditionsPage />
       <FAQ />
     </div>
   );
