@@ -205,7 +205,7 @@ export default function LoginPage() {
             <h2
               className={`${sora.className} text-2xl md:text-4xl font-black text-slate-900 dark:text-white`}
             >
-              Sign In
+               Login Here
             </h2>
 
             <p className="mt-3 text-xs lg:text-lg text-slate-600 dark:text-slate-400">

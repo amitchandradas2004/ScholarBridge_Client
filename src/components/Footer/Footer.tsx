@@ -22,9 +22,9 @@ const quickLinks = [
 ];
 
 const resources = [
-  { name: "Popular Countries", href: "/scholarships" },
-  { name: "Success Stories", href: "/" },
-  { name: "FAQ", href: "/" },
+  { name: "Popular Countries", href: "/popularCountries" },
+  { name: "Success Stories", href: "/successStories" },
+  { name: "FAQ", href: "/faq" },
 ];
 
 const legal = [
